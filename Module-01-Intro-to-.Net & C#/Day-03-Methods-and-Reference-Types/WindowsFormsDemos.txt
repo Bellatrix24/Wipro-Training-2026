@@ -1,0 +1,31 @@
+--- Windows Forms Practical Logic Notes ---
+
+Demo 1: Simple Web Browser
+--------------------------
+To create a mini-browser in our WinForms app, we use the 'WebBrowser' control.
+
+// Logic:
+// 1. Drag the WebBrowser control onto the Form.
+// 2. Set the 'Dock' property to 'Fill' so it takes all space.
+// 3. Use the following code to visit a site:
+
+webBrowser1.Navigate("https://www.google.com"); 
+
+// This tells the browser to go to the specific web address.
+
+
+Demo 2: Media Player Logic
+--------------------------
+To play songs or videos, we use the Windows Media Player COM component (AxWindowsMediaPlayer).
+
+// Logic:
+// 1. Add the "Windows Media Player" tool to the Toolbox.
+// 2. Drag it onto the Form.
+// 3. Use this simple code to load and play a file:
+
+string filePath = @"C:\Users\Student\Music\sample.mp3"; 
+axWindowsMediaPlayer1.URL = filePath; // Sets the file path
+axWindowsMediaPlayer1.Ctlcontrols.play(); // Starts the player
+
+--------------------------
+Note: These demos were practiced to understand how GUI controls and their methods work in basic .NET applications.
