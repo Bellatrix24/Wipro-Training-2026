@@ -26,15 +26,13 @@ Transitioning to non-relational storage for specific use cases (e.g., MongoDB, C
 - **Schema-on-Read**: Managing unstructured or semi-structured data (JSON/BSON).
 - **CAP Theorem**: Evaluating the trade-offs between Consistency, Availability, and Partition Tolerance.
 
-## Integration of Specialized Workflows
+## Core Persistence Workflows
 
-### Verification through Testing (Day 11 Alignment)
-The principles of Unit Testing and Test-Driven Development (TDD) extend into the database layer. 
-- **Integration Testing**: Validating the interaction between the application and the SQL Server.
-- **Transactional Rollbacks**: Ensuring test isolation by reverting database state post-execution.
+### Database Verification and Testing (Day 11)
+Implementation of testing frameworks to validate persistence logic. Focus on integration testing with SQL Server and ensuring transactional atomicity during test execution.
 
-### Schema Design and SOLID Refactoring (Day 12 Alignment)
-Database design mirrors clean code principles:
+### Schema Architecture and Design Patterns (Day 12)
+Application of SOLID principles to relational design to ensure scalability and maintainability.
 - **Single Responsibility**: Ensuring tables represent unique business entities.
 - **Dependency Inversion**: Decoupling the application from specific database implementations through abstraction layers.
-- **Normalization**: Reducing redundancy while maintaining performance (1NF to 3NF).
+- **Normalization**: Reducing redundancy while maintaining high performance (1NF to 3NF).

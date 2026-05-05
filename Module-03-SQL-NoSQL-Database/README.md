@@ -24,6 +24,8 @@ Advanced implementation of joins, subqueries, and set operations. Optimization s
 | :--- | :--- |
 | [Technical Overview](./Module_03_Technical_Overview.md) | Transition from C# logic to SQL, NoSQL, and SQL Server roadmap. |
 | [Architecture Standards](./SQL_Architecture_Standards.md) | SQL and SQL Server design rules and database verification patterns. |
+| [Day 11: Unit Testing & TDD](./Day-11-Unit-Testing-TDD/README.md) | Verification and validation of database logic and application services. |
+| [Day 12: Schema Design & SOLID](./Day-12-SOLID-and-SQL/README.md) | Relational design patterns and object-oriented refactoring. |
 
 ## Standards Compliance
 All implementations and documentation within this module adhere to Wipro NGA standards for professional software engineering, ensuring readability, maintainability, and enterprise readiness.
