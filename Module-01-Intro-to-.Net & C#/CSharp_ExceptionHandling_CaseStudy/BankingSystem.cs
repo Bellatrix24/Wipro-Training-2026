@@ -49,4 +49,44 @@ namespace BankingSystemApp
             Console.WriteLine($"[SUCCESS] Withdrew ₹{amount}. New Balance: ₹{Balance}");
         }
     }
+
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine("=== Banking System: Exception Handling Assessment ===\n");
+            BankAccount myAccount = null;
+
+            try
+            {
+                myAccount = new BankAccount("John Doe", 5000);
+                
+                // Test Case A: Valid
+                myAccount.Deposit(1000);
+                myAccount.Withdraw(2000);
+
+                // Test Case B: Min Balance Violation
+                Console.WriteLine("\nAttempting to violate min balance...");
+                myAccount.Withdraw(4500); 
+            }
+            catch (InsufficientBalanceException ex) { Console.WriteLine($"[ERROR] {ex.Message}"); }
+            catch (InvalidAmountException ex) { Console.WriteLine($"[ERROR] {ex.Message}"); }
+            catch (Exception ex) { Console.WriteLine($"[ERROR] Unexpected error: {ex.Message}"); }
+
+            try
+            {
+                // Test Case C: Invalid Amount
+                Console.WriteLine("\nAttempting negative deposit...");
+                myAccount?.Deposit(-100);
+            }
+            catch (InvalidAmountException ex) { Console.WriteLine($"[ERROR] {ex.Message}"); }
+            finally
+            {
+                Console.WriteLine("\n--------------------------------------------");
+                Console.WriteLine($"Final Balance: ₹{(myAccount?.Balance ?? 0)}");
+                Console.WriteLine("Cleanup: Closing system sessions. Clean exit.");
+                Console.WriteLine("--------------------------------------------");
+            }
+        }
+    }
 }
