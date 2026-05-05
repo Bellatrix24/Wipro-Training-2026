@@ -20,6 +20,8 @@ This module represents the bridge between core C# logic and professional web app
 *   [Architecture Basics](./Architecture_Basics.md) - Reference for the Request-Response pipeline and security standards.
 *   **Day 09**: Advanced C# Fundamentals.
 *   **Day 10**: .NET Security & Reliability.
+*   **Day 11**: Unit Testing & Test-Driven Development (TDD).
+*   **Day 12**: SOLID Refactoring & Relational Schema Design.
 
 ---
 *This repository serves as a professional portfolio demonstrating advanced proficiency in the .NET ecosystem.*
