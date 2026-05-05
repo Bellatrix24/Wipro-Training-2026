@@ -26,6 +26,7 @@ Advanced implementation of joins, subqueries, and set operations. Optimization s
 | [Architecture Standards](./SQL_Architecture_Standards.md) | SQL and SQL Server design rules and database verification patterns. |
 | [Day 11: Unit Testing & TDD](./Day-11-Unit-Testing-TDD/README.md) | Verification and validation of database logic and application services. |
 | [Day 12: Schema Design & SOLID](./Day-12-SOLID-and-SQL/README.md) | Relational design patterns and object-oriented refactoring. |
+| [Day 13: Design Patterns & DCL](./Day-13-Design-Patterns-DCL/README.md) | Scalable application architecture and database security lifecycle. |
 
 ## Standards Compliance
 All implementations and documentation within this module adhere to Wipro NGA standards for professional software engineering, ensuring readability, maintainability, and enterprise readiness.

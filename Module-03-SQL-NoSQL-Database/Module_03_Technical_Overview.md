@@ -36,3 +36,6 @@ Application of SOLID principles to relational design to ensure scalability and m
 - **Single Responsibility**: Ensuring tables represent unique business entities.
 - **Dependency Inversion**: Decoupling the application from specific database implementations through abstraction layers.
 - **Normalization**: Reducing redundancy while maintaining high performance (1NF to 3NF).
+
+### Advanced Scalability and Security (Day 13)
+Integration of complex design patterns (Creational, Structural, Behavioral) to manage application state and behavior. Implementation of Data Control Language (DCL) to secure database assets using granular permissions and role-based access control.
