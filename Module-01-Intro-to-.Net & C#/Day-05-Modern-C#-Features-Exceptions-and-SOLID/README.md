@@ -1,7 +1,7 @@
-# Day 5: Advanced C# Features and SOLID Principles
+# Day 5: Modern C# features, Custom Exceptions, and SOLID Principles
 
 ## Today's Learning Summary
-Today was intense! We explored how C# has evolved over the years and learned best practices for writing maintainable code using SOLID principles.
+Today we focused on the evolution of C# and learned best practices for writing maintainable code using SOLID principles.
 
 ### C# Evolution: 7.0 to 10.0
 | Feature (C# 7.0 & 8.0) | Description |
