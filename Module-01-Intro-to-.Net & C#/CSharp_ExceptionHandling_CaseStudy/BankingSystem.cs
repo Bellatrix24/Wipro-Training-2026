@@ -27,5 +27,26 @@ namespace BankingSystemApp
             AccountHolderName = name;
             Balance = initialBalance;
         }
+
+        public void Deposit(double amount)
+        {
+            if (amount <= 0)
+                throw new InvalidAmountException("Deposit amount must be positive.");
+            Balance += amount;
+            Console.WriteLine($"[SUCCESS] Deposited ₹{amount}. New Balance: ₹{Balance}");
+        }
+
+        public void Withdraw(double amount)
+        {
+            if (amount <= 0)
+                throw new InvalidAmountException("Withdrawal amount must be positive.");
+            if (amount > Balance)
+                throw new InsufficientBalanceException("Insufficient balance.");
+            if (Balance - amount < MinimumBalance)
+                throw new InsufficientBalanceException($"Minimum balance of ₹{MinimumBalance} required.");
+            
+            Balance -= amount;
+            Console.WriteLine($"[SUCCESS] Withdrew ₹{amount}. New Balance: ₹{Balance}");
+        }
     }
 }
