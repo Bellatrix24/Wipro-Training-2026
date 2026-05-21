@@ -10,6 +10,7 @@ Whenever a user visits our website, the front-end browser sends a web request. O
 ## File Contents in this Folder
 
 *   [Day-16-WebAPI-Middleware](./Day-16-WebAPI-Middleware/README.md): Practical daily notes on Web API architecture and custom request pipeline middleware.
+*   [Day-17-RazorPages-MVC](./Day-17-RazorPages-MVC/README.md): Practical daily notes and templates for Razor Pages binding and MVC structure.
 *   [Web_Architecture_Notes.md](./Web_Architecture_Notes.md): A study guide written in plain English comparing client-side and server-side logic, showing how Microsoft web frameworks evolved, and explaining different types of applications.
 *   [SimpleWebDemo_Program.cs](./SimpleWebDemo_Program.cs): A minimal C# starting file using top-level statements to spin up a basic web server with casual explanatory comments.
 
