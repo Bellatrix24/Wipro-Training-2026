@@ -13,6 +13,7 @@ Whenever a user visits our website, the front-end browser sends a web request. O
 *   [Day-17-RazorPages-MVC](./Day-17-RazorPages-MVC/README.md): Practical daily notes and templates for Razor Pages binding and MVC structure.
 *   [Day-18-State-Binding-Validation](./Day-18-State-Binding-Validation/README.md): Practical daily notes, page models, and data validation rules.
 *   [Day-19-Routing-Sessions](./Day-19-Routing-Sessions/README.md): Practical daily notes, MVC controllers, custom routes, and session authentication handlers.
+*   [Day-20-State-Filters](./Day-20-State-Filters/README.md): Practical daily notes, MVC filters, cookie/session configurations, and custom pipeline logging.
 *   [Web_Architecture_Notes.md](./Web_Architecture_Notes.md): A study guide written in plain English comparing client-side and server-side logic, showing how Microsoft web frameworks evolved, and explaining different types of applications.
 *   [SimpleWebDemo_Program.cs](./SimpleWebDemo_Program.cs): A minimal C# starting file using top-level statements to spin up a basic web server with casual explanatory comments.
 
