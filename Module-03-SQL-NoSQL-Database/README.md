@@ -28,6 +28,7 @@ Advanced implementation of joins, subqueries, and set operations. Optimization s
 | [Day 12: Schema Design & SOLID](./Day-12-SOLID-and-SQL/README.md) | Relational design patterns and object-oriented refactoring. |
 | [Day 13: Design Patterns & DCL](./Day-13-Design-Patterns-DCL/README.md) | Scalable application architecture and database security lifecycle. |
 | [Day 14: Database Programmability](./Day-14-Database-Programmability/README.md) | Database modular schema programmability (Functions & Stored Procedures). |
+| [Day 15: Subqueries & Triggers](./Day-15-Subqueries-Triggers/README.md) | Subqueries (Scalar, IN, Correlated) and DML After Triggers in SQL. |
 
 ## Standards Compliance
 All implementations and documentation within this module adhere to Wipro NGA standards for professional software engineering, ensuring readability, maintainability, and enterprise readiness.
