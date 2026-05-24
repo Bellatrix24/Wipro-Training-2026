@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="AdvancedRoutingEcommerceApp.Tests/AdvancedRoutingEcommerceApp.Tests.csproj" />
+  <Project Path="AdvancedRoutingEcommerceApp/AdvancedRoutingEcommerceApp.csproj" />
+</Solution>

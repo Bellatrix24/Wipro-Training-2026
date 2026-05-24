@@ -1,0 +1,38 @@
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Filtered Products";
+    var category = ViewBag.Category as string;
+    var priceRange = ViewBag.PriceRange as string;
+    var minPrice = ViewBag.MinPrice;
+    var maxPrice = ViewBag.MaxPrice;
+}
+
+<div class="filter-header-container glass-card">
+    <h2>Filtered Results</h2>
+    <p>Showing products in category <strong>@category</strong> with price between <strong>$@minPrice</strong> and <strong>$@maxPrice</strong> (Range: @priceRange).</p>
+</div>
+
+<div class="product-grid">
+    @if (Model != null && Model.Any())
+    {
+        foreach (var product in Model)
+        {
+            <div class="product-card glass-card">
+                <span class="product-category-tag">@product.Category</span>
+                <h3>@product.Name</h3>
+                <p class="product-desc">@product.Description</p>
+                <div class="product-price-row">
+                    <span class="price-val">$@product.Price.ToString("F2")</span>
+                    <a asp-controller="Products" asp-action="Details" asp-route-category="@product.Category" asp-route-id="@product.Id" class="btn-sm-premium">Details</a>
+                </div>
+            </div>
+        }
+    }
+    else
+    {
+        <div class="no-results glass-card">
+            <p>No products were found matching the selected filter criteria.</p>
+            <a href="/" class="btn-secondary-premium">Reset Filters</a>
+        </div>
+    }
+</div>

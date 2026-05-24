@@ -1,0 +1,33 @@
+@{
+    ViewData["Title"] = "Customer Login";
+}
+
+<div class="login-container glass-card">
+    <div class="login-header">
+        <h2>Customer Authentication</h2>
+        <div class="alert-info-premium">
+            <p>Access Denied: You must be logged in to view checkout details. Use the form below to authenticate instantly.</p>
+        </div>
+    </div>
+
+    <form class="login-form" method="get" action="/Checkout">
+        <!-- We pass loggedIn=true on submission to show successful authentication and routing redirect -->
+        <input type="hidden" name="loggedIn" value="true" />
+        
+        <div class="form-group-premium">
+            <label for="username">Email or Username</label>
+            <input type="text" id="username" name="user" value="john" required />
+        </div>
+        
+        <div class="form-group-premium">
+            <label for="password">Password</label>
+            <input type="password" id="password" value="password" required />
+        </div>
+
+        <button type="submit" class="btn-primary-premium w-100">Login and Complete Checkout</button>
+    </form>
+    
+    <div class="login-footer">
+        <p>Demo accounts: Use <strong>john</strong> or <strong>jane</strong> with any password to simulate user states.</p>
+    </div>
+</div>

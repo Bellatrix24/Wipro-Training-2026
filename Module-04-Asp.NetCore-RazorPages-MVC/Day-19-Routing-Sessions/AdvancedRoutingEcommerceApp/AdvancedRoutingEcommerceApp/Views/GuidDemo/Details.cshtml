@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "GUID Validation Successful";
+    var guidValue = ViewBag.GuidValue as string;
+}
+
+<div class="guid-container glass-card">
+    <div class="guid-header text-center">
+        <span class="badge-premium success-badge">Route Constraint Validated</span>
+        <h2>GUID Validation Demo</h2>
+    </div>
+    
+    <div class="guid-body text-center">
+        <p>The custom GuidRouteConstraint successfully parsed and allowed matching for this URL pattern because the path segment is a valid GUID representation.</p>
+        <div class="guid-box">
+            <code>@guidValue</code>
+        </div>
+    </div>
+    
+    <div class="guid-footer text-center">
+        <a href="/" class="btn-secondary-premium">Back to Route Catalog</a>
+    </div>
+</div>

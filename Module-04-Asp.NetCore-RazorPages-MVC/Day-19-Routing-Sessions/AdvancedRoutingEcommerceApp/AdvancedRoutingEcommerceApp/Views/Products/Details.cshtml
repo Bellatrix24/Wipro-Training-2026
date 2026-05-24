@@ -1,0 +1,29 @@
+@model Product
+@{
+    ViewData["Title"] = Model.Name + " Details";
+}
+
+<div class="glass-card">
+    <div class="card-header-premium">
+        <span class="badge-premium">@Model.Category</span>
+        <h2>@Model.Name</h2>
+    </div>
+    <div class="card-body-premium">
+        <div class="info-row">
+            <span class="info-label">Product ID:</span>
+            <span class="info-value">@Model.Id</span>
+        </div>
+        <div class="info-row">
+            <span class="info-label">Description:</span>
+            <span class="info-value">@Model.Description</span>
+        </div>
+        <div class="info-row price-row">
+            <span class="info-label">Price:</span>
+            <span class="info-value price-text">$@Model.Price.ToString("F2")</span>
+        </div>
+    </div>
+    <div class="card-footer-premium">
+        <a href="/" class="btn-secondary-premium">Back to Catalog</a>
+        <a asp-controller="Checkout" asp-action="Index" asp-route-loggedIn="true" class="btn-primary-premium">Purchase Now</a>
+    </div>
+</div>

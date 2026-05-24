@@ -1,0 +1,23 @@
+@{
+    ViewData["Title"] = "User Dashboard";
+}
+
+<div class="dashboard-header glass-card">
+    <h2>Customer Portal</h2>
+    <span class="role-badge user-badge">Standard Account</span>
+    <p>Explore hot deals, view your past shopping activities, or edit your shipping settings.</p>
+</div>
+
+<div class="user-dashboard-grid">
+    <div class="nav-card glass-card">
+        <h3>View Order History</h3>
+        <p>Review orders, print receipts, and track shipments for your recent purchases.</p>
+        <a asp-controller="Users" asp-action="Orders" asp-route-username="john" class="btn-primary-premium">View Orders</a>
+    </div>
+
+    <div class="nav-card glass-card">
+        <h3>Explore Products</h3>
+        <p>Browse our electronics and books catalogs to find exactly what you need today.</p>
+        <a href="/" class="btn-secondary-premium">Browse Store</a>
+    </div>
+</div>

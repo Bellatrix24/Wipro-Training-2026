@@ -1,0 +1,53 @@
+@model IEnumerable<Order>
+@{
+    ViewData["Title"] = ViewBag.Username + "'s Orders";
+    var username = ViewBag.Username as string;
+}
+
+<div class="orders-container glass-card">
+    <div class="orders-header">
+        <h2>Order History for User: <span class="highlight-text">@username</span></h2>
+        <p>Manage and review your recent shopping transactions and purchases.</p>
+    </div>
+
+    @if (Model != null && Model.Any())
+    {
+        <div class="table-responsive-premium">
+            <table class="table-premium">
+                <thead>
+                    <tr>
+                        <th>Order ID</th>
+                        <th>Date</th>
+                        <th>Purchased Items</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var order in Model)
+                    {
+                        <tr>
+                            <td>#@order.Id</td>
+                            <td>@order.OrderDate.ToString("yyyy-MM-dd HH:mm")</td>
+                            <td>
+                                <ul class="order-items-list">
+                                    @foreach (var item in order.Items)
+                                    {
+                                        <li>@item</li>
+                                    }
+                                </ul>
+                            </td>
+                            <td class="total-col">$@order.TotalAmount.ToString("F2")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+    else
+    {
+        <div class="no-orders">
+            <p>No orders found for user '@username'. Ready to place your first order?</p>
+            <a href="/" class="btn-primary-premium">Start Shopping</a>
+        </div>
+    }
+</div>

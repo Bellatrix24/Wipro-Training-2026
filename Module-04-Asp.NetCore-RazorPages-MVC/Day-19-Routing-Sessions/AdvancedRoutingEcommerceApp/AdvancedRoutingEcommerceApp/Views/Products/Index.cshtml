@@ -1,0 +1,116 @@
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Premium E-Commerce Catalog";
+    var demoGuid = Guid.NewGuid().ToString();
+}
+
+<div class="home-hero glass-card">
+    <h1>Advanced Routing Demo Portal</h1>
+    <p>Explore dynamic routing patterns, custom constraints, role-based dashboards, and guest checkouts in one unified solution.</p>
+</div>
+
+<div class="home-split-layout">
+    <!-- Catalog Section -->
+    <div class="catalog-section">
+        <h2 class="section-title">Product Catalog</h2>
+        <div class="product-grid">
+            @foreach (var product in Model)
+            {
+                <div class="product-card glass-card">
+                    <span class="product-category-tag">@product.Category</span>
+                    <h3>@product.Name</h3>
+                    <p class="product-desc">@product.Description</p>
+                    <div class="product-price-row">
+                        <span class="price-val">$@product.Price.ToString("F2")</span>
+                        <a asp-controller="Products" asp-action="Details" asp-route-category="@product.Category" asp-route-id="@product.Id" class="btn-sm-premium">Details</a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+    <!-- Interactive Sidebar Route Suite -->
+    <div class="sidebar-section">
+        <div class="route-suite-card glass-card">
+            <h3>Interactive Route Testing Suite</h3>
+            <p class="suite-info">Click any route below to verify constraint execution and controller-action dispatching.</p>
+            
+            <div class="route-group">
+                <h4>Assignment 1: Advanced MVC Routing</h4>
+                <ul class="route-list">
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/Users/john/Orders" class="route-link">/Users/john/Orders</a>
+                        <span class="route-desc">User Order History</span>
+                    </li>
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/Dashboard?role=admin" class="route-link">/Dashboard?role=admin</a>
+                        <span class="route-desc">Admin Dynamic Dashboard</span>
+                    </li>
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/Dashboard?role=user" class="route-link">/Dashboard?role=user</a>
+                        <span class="route-desc">User Dynamic Dashboard</span>
+                    </li>
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/GuidDemo/@demoGuid" class="route-link">/GuidDemo/[Valid-GUID]</a>
+                        <span class="route-desc">GUID Custom Constraint (Valid)</span>
+                    </li>
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/GuidDemo/invalid-guid-value-123" class="route-link text-danger">/GuidDemo/invalid-guid</a>
+                        <span class="route-desc">GUID Custom Constraint (404 Fail)</span>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="route-group">
+                <h4>Assignment 2: E-Commerce Advanced Routing</h4>
+                <ul class="route-list">
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/Products/electronics/1" class="route-link">/Products/electronics/1</a>
+                        <span class="route-desc">Category & Product ID Detail</span>
+                    </li>
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/Products/books/5" class="route-link">/Products/books/5</a>
+                        <span class="route-desc">Category & Product ID Detail</span>
+                    </li>
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/Products/Filter/electronics/100-500" class="route-link">/Products/Filter/electronics/100-500</a>
+                        <span class="route-desc">Category & Price Range Constraint</span>
+                    </li>
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/Products/Filter/books/10-50" class="route-link">/Products/Filter/books/10-50</a>
+                        <span class="route-desc">Category & Price Range Constraint</span>
+                    </li>
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/Products/Filter/furniture/100-500" class="route-link text-danger">/Products/Filter/furniture/100-500</a>
+                        <span class="route-desc">Invalid Category (404 Fail)</span>
+                    </li>
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/Products/Filter/electronics/abc-xyz" class="route-link text-danger">/Products/Filter/electronics/abc-xyz</a>
+                        <span class="route-desc">Invalid Price Format (404 Fail)</span>
+                    </li>
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/Checkout?loggedIn=false" class="route-link">/Checkout?loggedIn=false</a>
+                        <span class="route-desc">Guest Checkout (Login Redirect)</span>
+                    </li>
+                    <li>
+                        <span class="route-method">GET</span>
+                        <a href="/Checkout?loggedIn=true" class="route-link">/Checkout?loggedIn=true</a>
+                        <span class="route-desc">User Checkout (Allowed)</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

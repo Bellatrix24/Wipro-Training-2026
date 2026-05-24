@@ -1,0 +1,36 @@
+@{
+    ViewData["Title"] = "Admin Dashboard";
+}
+
+<div class="dashboard-header glass-card admin-border">
+    <h2>Administrative Console</h2>
+    <span class="role-badge admin-badge">Administrator Mode</span>
+    <p>Welcome back! You have full access to management tools, sales tracking, and server configuration metrics.</p>
+</div>
+
+<div class="stats-grid">
+    <div class="stat-card glass-card">
+        <span class="stat-label">Total Revenue</span>
+        <span class="stat-value">$14,250.00</span>
+        <span class="stat-trend up">+12% this week</span>
+    </div>
+    <div class="stat-card glass-card">
+        <span class="stat-label">Active Users</span>
+        <span class="stat-value">1,280</span>
+        <span class="stat-trend up">+5% this hour</span>
+    </div>
+    <div class="stat-card glass-card">
+        <span class="stat-label">System Status</span>
+        <span class="stat-value text-success">Healthy</span>
+        <span class="stat-trend">uptime 99.98%</span>
+    </div>
+</div>
+
+<div class="admin-actions-container glass-card">
+    <h3>Quick Management Operations</h3>
+    <div class="btn-group-premium">
+        <button class="btn-primary-premium">Manage Products</button>
+        <button class="btn-secondary-premium">View Sales Reports</button>
+        <button class="btn-secondary-premium">System Logs</button>
+    </div>
+</div>
