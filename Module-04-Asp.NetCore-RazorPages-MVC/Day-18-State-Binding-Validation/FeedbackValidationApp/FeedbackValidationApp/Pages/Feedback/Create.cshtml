@@ -1,0 +1,70 @@
+@page
+@model FeedbackValidationApp.Pages.Feedback.CreateModel
+@{
+    ViewData["Title"] = "Customer Feedback Portal";
+}
+
+@* Natural comment: Form page to submit feedback. Combines HTML Helpers and Tag Helpers. *@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-success">
+                <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+                    <h4 class="mb-0">Customer Feedback Portal</h4>
+                    @* AnchorTagHelper used for navigation *@
+                    <a asp-page="/Feedback/List" class="btn btn-sm btn-outline-light">View Submissions</a>
+                </div>
+                <div class="card-body">
+                    
+                    @* FormTagHelper used for form submission *@
+                    <form method="post">
+                        
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Name (Generated with Custom HTML Helper)</label>
+                            @* Use custom HTML Helper to generate a styled text input *@
+                            @Html.CustomInput("Feedback.Name", Model.Feedback.Name, "Enter your full name", "form-control")
+                            <span asp-validation-for="Feedback.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Email (Generated with TextBoxFor Helper)</label>
+                            @* Use built-in HTML Helper TextBoxFor *@
+                            @Html.TextBoxFor(m => m.Feedback.Email, new { @class = "form-control", placeholder = "yourname@example.com" })
+                            <span asp-validation-for="Feedback.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Rating (Generated with DropDownListFor Helper)</label>
+                            @* Use built-in HTML Helper DropDownListFor *@
+                            @Html.DropDownListFor(m => m.Feedback.Rating, Model.RatingOptions, new { @class = "form-select" })
+                            <span asp-validation-for="Feedback.Rating" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label font-weight-bold">Comments (Generated with TextAreaFor Helper)</label>
+                            @* Use built-in HTML Helper TextAreaFor *@
+                            @Html.TextAreaFor(m => m.Feedback.Comments, new { @class = "form-control", rows = "4", placeholder = "Write your feedback comments..." })
+                            <span asp-validation-for="Feedback.Comments" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4 text-center border p-3 bg-light rounded">
+                            <span class="d-block font-weight-bold mb-2">TagHelper Star Widget Demonstration (Rating: 4/5)</span>
+                            @* Use custom rating star TagHelper directly in the feedback form *@
+                            <rating-stars rating="4" max-stars="5"></rating-stars>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-page="/Index" class="btn btn-outline-secondary">Home</a>
+                            <button type="submit" class="btn btn-success">Submit Feedback</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

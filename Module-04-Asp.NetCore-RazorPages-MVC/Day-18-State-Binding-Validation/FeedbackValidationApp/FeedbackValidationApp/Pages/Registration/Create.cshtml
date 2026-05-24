@@ -1,0 +1,67 @@
+@page
+@model FeedbackValidationApp.Pages.Registration.CreateModel
+@{
+    ViewData["Title"] = "User Registration Portal";
+}
+
+@* Natural comment: Form page to register a user. Demonstrates validation summary and client-side validation. *@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-primary">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">User Registration System</h4>
+                </div>
+                <div class="card-body">
+                    
+                    <form method="post">
+                        
+                        @* Show a full validation summary at the top of the form *@
+                        <div asp-validation-summary="All" class="alert alert-danger" role="alert">
+                            <strong>Please correct the following errors:</strong>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Registration.Username" class="form-label font-weight-bold"></label>
+                            <input asp-for="Registration.Username" class="form-control" placeholder="Enter username (3-30 chars)" />
+                            @* Show individual validation message *@
+                            <span asp-validation-for="Registration.Username" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Registration.Email" class="form-label font-weight-bold"></label>
+                            <input asp-for="Registration.Email" class="form-control" type="email" placeholder="user@example.com" />
+                            @* Show individual validation message *@
+                            <span asp-validation-for="Registration.Email" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Registration.Password" class="form-label font-weight-bold"></label>
+                            <input asp-for="Registration.Password" class="form-control" placeholder="Enter password (min 6 chars)" />
+                            @* Show individual validation message *@
+                            <span asp-validation-for="Registration.Password" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Registration.ConfirmPassword" class="form-label font-weight-bold"></label>
+                            <input asp-for="Registration.ConfirmPassword" class="form-control" placeholder="Confirm password entry" />
+                            @* Show individual validation message *@
+                            <span asp-validation-for="Registration.ConfirmPassword" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-page="/Index" class="btn btn-outline-secondary">Home</a>
+                            <button type="submit" class="btn btn-primary">Register Account</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@* Enable client-side validation using the required JavaScript validation libraries *@
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
