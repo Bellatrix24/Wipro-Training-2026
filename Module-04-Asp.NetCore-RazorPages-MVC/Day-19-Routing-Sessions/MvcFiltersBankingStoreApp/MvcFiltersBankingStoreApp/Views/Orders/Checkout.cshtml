@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h2>E-Commerce Order Checkout</h2>
+<div class="alert alert-success mt-3">
+    <strong>Success:</strong> You have bypassed the SimpleAuthenticationFilter and loaded this secure checkout screen!
+</div>
+
+<div class="card mt-3">
+    <div class="card-header bg-primary text-white">
+        Secure Checkout Information
+    </div>
+    <div class="card-body">
+        <p>This simulates a secure billing transaction form protected by custom filters. All activity has been registered in the logs.</p>
+        <button class="btn btn-success" onclick="alert('Simulated order processed successfully!')">Submit Payment</button>
+        <a href="/Products" class="btn btn-secondary">Back to Products</a>
+    </div>
+</div>

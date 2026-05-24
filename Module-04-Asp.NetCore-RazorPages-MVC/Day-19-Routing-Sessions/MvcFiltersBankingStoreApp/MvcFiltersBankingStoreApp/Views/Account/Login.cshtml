@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>Authentication Required</h2>
+<div class="alert alert-warning mt-3">
+    <strong>Notice:</strong> You were redirected here because the SimpleAuthenticationFilter blocked your access to a protected page.
+</div>
+
+<div class="card mt-3" style="max-width: 500px;">
+    <div class="card-header bg-dark text-white">
+        Mock User Session Controller
+    </div>
+    <div class="card-body">
+        <p>To simulate a successful authenticated state, click one of the quick authorization helpers below:</p>
+        <div class="d-grid gap-2">
+            <a href="/Orders/Checkout?loggedIn=true" class="btn btn-primary">Simulate Login and Go to Checkout</a>
+            <a href="/Banking/Accounts?loggedIn=true" class="btn btn-success">Simulate Login and Go to Bank Accounts</a>
+            <a href="/Admin/Users?loggedIn=true&role=admin" class="btn btn-info">Simulate Login as Admin and Go to Admin Users</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="MvcFiltersBankingStoreApp.Tests/MvcFiltersBankingStoreApp.Tests.csproj" />
+  <Project Path="MvcFiltersBankingStoreApp/MvcFiltersBankingStoreApp.csproj" />
+</Solution>

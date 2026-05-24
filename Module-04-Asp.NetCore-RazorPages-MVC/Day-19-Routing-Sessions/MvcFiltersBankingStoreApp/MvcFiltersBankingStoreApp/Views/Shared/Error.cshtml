@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Application Error";
+    var errorMessage = ViewData["ErrorMessage"] as string ?? "A system exception has occurred during request execution.";
+}
+
+<h2>Application Error</h2>
+<div class="alert alert-danger mt-3">
+    <h4>Unhandled Exception Intercepted</h4>
+    <p><strong>Error Message:</strong> @errorMessage</p>
+</div>
+
+<div class="card mt-3">
+    <div class="card-header bg-dark text-white">
+        GlobalExceptionFilter Diagnostic Info
+    </div>
+    <div class="card-body">
+        <p>This exception was caught by the custom exception handler filter, which prevented a raw system crash, logged the details to `LoggingService`, and routed your session here.</p>
+        <a href="/Products" class="btn btn-secondary">Return to Catalog</a>
+    </div>
+</div>

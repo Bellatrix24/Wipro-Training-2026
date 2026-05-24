@@ -1,0 +1,54 @@
+@{
+    ViewData["Title"] = "Transfer Funds";
+}
+
+<h2>Wire Transfer Simulator</h2>
+<p class="text-muted">Simulate transferring funds between static accounts. Processing a transfer will trigger the UserActionLoggingFilter.</p>
+
+@if (ViewBag.Success != null)
+{
+    <div class="alert alert-success mt-3">
+        @ViewBag.Success
+    </div>
+}
+@if (ViewBag.Error != null)
+{
+    <div class="alert alert-danger mt-3">
+        @ViewBag.Error
+    </div>
+}
+
+<div class="card mt-3" style="max-width: 600px;">
+    <div class="card-header bg-primary text-white">
+        Simulate Account Transfer
+    </div>
+    <div class="card-body">
+        <form method="post" action="/Banking/Transfer?loggedIn=true">
+            <div class="mb-3">
+                <label for="fromAccount" class="form-label">Source Account</label>
+                <select id="fromAccount" name="fromAccount" class="form-select" required>
+                    <option value="123456">123456 - John's Savings (Balance: $1500)</option>
+                    <option value="789012">789012 - John's Checking (Balance: $500)</option>
+                    <option value="999999">999999 - Admin's Reserve (Balance: $125000)</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="toAccount" class="form-label">Recipient Account</label>
+                <select id="toAccount" name="toAccount" class="form-select" required>
+                    <option value="789012">789012 - John's Checking</option>
+                    <option value="123456">123456 - John's Savings</option>
+                    <option value="999999">999999 - Admin's Reserve</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="amount" class="form-label">Transfer Amount ($)</label>
+                <input type="number" step="0.01" min="0.01" class="form-control" id="amount" name="amount" value="50.00" required />
+            </div>
+
+            <button type="submit" class="btn btn-success">Process Transfer</button>
+            <a href="/Banking/Accounts?loggedIn=true" class="btn btn-secondary">Back to Accounts</a>
+        </form>
+    </div>
+</div>

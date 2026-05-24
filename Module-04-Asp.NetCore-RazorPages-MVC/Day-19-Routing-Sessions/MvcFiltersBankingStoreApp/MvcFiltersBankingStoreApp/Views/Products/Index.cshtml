@@ -1,0 +1,52 @@
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Products Catalog";
+}
+
+<div class="row">
+    <div class="col-md-8">
+        <h2>Available Products</h2>
+        <p class="text-muted">A simple products page to verify public access and global request logging filters.</p>
+        
+        <table class="table table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var p in Model)
+                {
+                    <tr>
+                        <td>@p.Id</td>
+                        <td>@p.Name</td>
+                        <td>@p.Category</td>
+                        <td>$@p.Price.ToString("F2")</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+    
+    <div class="col-md-4">
+        <div class="card card-body bg-light">
+            <h4>Filters Test Suite</h4>
+            <p class="small text-muted">Use the quick links below to verify the logging, authentication, authorization, and exception filters:</p>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="/Products">1. Public Catalog (Public)</a></li>
+                <li class="list-group-item"><a href="/Orders/Checkout?loggedIn=true">2. Checkout (Auth Success)</a></li>
+                <li class="list-group-item"><a href="/Orders/Checkout?loggedIn=false">3. Checkout (Auth Fail -> Login Redirect)</a></li>
+                <li class="list-group-item"><a href="/Banking/Accounts?loggedIn=true">4. Accounts (Auth Success)</a></li>
+                <li class="list-group-item"><a href="/Banking/Accounts?loggedIn=false">5. Accounts (Auth Fail -> Login Redirect)</a></li>
+                <li class="list-group-item"><a href="/Banking/Transactions?loggedIn=true">6. Ledger Transactions</a></li>
+                <li class="list-group-item"><a href="/Banking/Transfer?loggedIn=true">7. Wire Transfer Simulator</a></li>
+                <li class="list-group-item"><a href="/Admin/Users?loggedIn=true&role=admin">8. Admin Portal (Admin Success)</a></li>
+                <li class="list-group-item"><a href="/Admin/Users?loggedIn=true&role=user">9. Admin Portal (Admin Auth Fail -> 403)</a></li>
+                <li class="list-group-item"><a href="/ErrorDemo/Throw" class="text-danger font-weight-bold">10. Global Exception Filter (Throws Error)</a></li>
+            </ul>
+        </div>
+    </div>
+</div>
