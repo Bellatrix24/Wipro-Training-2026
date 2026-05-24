@@ -1,0 +1,44 @@
+@page
+@model MiddlewareRazorPagesApp.Pages.Items.CreateModel
+@{
+    ViewData["Title"] = "Add New Item";
+}
+
+@* Natural comment: Form page to create a new item record. *@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm border-success">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Add New Catalog Item</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        
+                        <div class="mb-3">
+                            <label asp-for="Item.Name" class="form-label font-weight-bold"></label>
+                            <input asp-for="Item.Name" class="form-control" placeholder="Enter item name" />
+                            <span asp-validation-for="Item.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label asp-for="Item.Description" class="form-label font-weight-bold"></label>
+                            <textarea asp-for="Item.Description" class="form-control" rows="4" placeholder="Enter item description"></textarea>
+                            <span asp-validation-for="Item.Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-page="/Items/Index" class="btn btn-outline-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-success">Save Item</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Files Delivery Verification</title>
+    <link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+    <div class="static-container">
+        <h1>Static Files Verification Page</h1>
+        <p>
+            Hello! This HTML file is served directly from the <strong>wwwroot/</strong> directory. 
+            It is a standalone static asset used to satisfy the middleware delivery requirement.
+        </p>
+        <div class="status-card">
+            <h3>Static Files Delivery Checklist:</h3>
+            <ul>
+                <li>HTML Page (index.html): <span class="badge success">Served</span></li>
+                <li>CSS Style (site.css): <span class="badge success">Loaded</span></li>
+                <li>JavaScript File (site.js): <span class="badge warning" id="js-status">Loading...</span></li>
+            </ul>
+        </div>
+        <div class="actions">
+            <a href="/" class="btn-primary">Return to Razor Pages App</a>
+        </div>
+    </div>
+
+    <script src="/js/site.js"></script>
+</body>
+</html>
