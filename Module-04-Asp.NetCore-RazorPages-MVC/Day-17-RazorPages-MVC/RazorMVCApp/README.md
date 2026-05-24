@@ -35,7 +35,7 @@ Ensure you have the .NET SDK installed (minimum version .NET 8).
 ### Step 1: Open Terminal
 Open a command prompt or PowerShell terminal and navigate to the project directory:
 ```bash
-cd Wipro-Training-2026/Module-04-Asp.NetCore-RazorPages-MVC/Day-16-WebAPI-Middleware/RazorMVCApp
+cd Wipro-Training-2026/Module-04-Asp.NetCore-RazorPages-MVC/Day-17-RazorPages-MVC/RazorMVCApp
 ```
 
 ### Step 2: Build the Solution
