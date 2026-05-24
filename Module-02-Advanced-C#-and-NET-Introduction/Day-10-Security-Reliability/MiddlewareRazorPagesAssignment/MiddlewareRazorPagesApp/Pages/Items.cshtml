@@ -1,0 +1,36 @@
+@page
+@model ItemsModel
+@{
+    ViewData["Title"] = "Catalog Items";
+}
+
+<div class="glass-container" style="max-width: 900px; margin: 0 auto; text-align: left;">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+        <h1 class="gradient-title" style="margin: 0;">In-Memory Catalog</h1>
+        <a asp-page="/AddItem" class="btn primary-btn">+ Add Item</a>
+    </div>
+    
+    <p class="subtitle" style="margin-bottom: 1.5rem;">Below is the dynamic list of seeded and user-added items retrieved from the static store.</p>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th style="width: 80px;">ID</th>
+                <th style="width: 250px;">Item Name</th>
+                <th>Description</th>
+                <th style="width: 120px; text-align: center;">Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.CatalogItems)
+            {
+                <tr>
+                    <td><strong>#@item.Id</strong></td>
+                    <td style="color: var(--text-primary); font-weight: 600;">@item.Name</td>
+                    <td>@item.Description</td>
+                    <td style="text-align: center;"><span class="badge">Active</span></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

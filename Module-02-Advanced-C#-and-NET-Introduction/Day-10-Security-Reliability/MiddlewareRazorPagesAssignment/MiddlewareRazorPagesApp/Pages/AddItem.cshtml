@@ -1,0 +1,33 @@
+@page
+@model AddItemModel
+@{
+    ViewData["Title"] = "Add New Item";
+}
+
+<div class="glass-container" style="max-width: 600px; margin: 0 auto; text-align: left;">
+    <h1 class="gradient-title" style="margin-bottom: 0.5rem;">Add New Item</h1>
+    <p class="subtitle" style="margin-bottom: 2rem;">Contribute new items dynamically to the shared in-memory catalog store.</p>
+
+    <form method="post" novalidate>
+        <div class="form-group">
+            <label class="form-label" asp-for="Name">Item Name</label>
+            <input class="form-control" asp-for="Name" placeholder="Enter item name..." />
+            <span asp-validation-for="Name" style="color: #ef4444; font-size: 0.85rem; display: block; margin-top: 0.25rem;"></span>
+        </div>
+
+        <div class="form-group" style="margin-bottom: 2rem;">
+            <label class="form-label" asp-for="Description">Description</label>
+            <textarea class="form-control" asp-for="Description" rows="4" placeholder="Enter detailed description..."></textarea>
+            <span asp-validation-for="Description" style="color: #ef4444; font-size: 0.85rem; display: block; margin-top: 0.25rem;"></span>
+        </div>
+
+        <div class="button-group" style="justify-content: flex-end;">
+            <a asp-page="/Items" class="btn secondary-btn">Cancel</a>
+            <button type="submit" class="btn primary-btn">Add to Catalog</button>
+        </div>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

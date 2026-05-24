@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Static Page - Library Middleware Demo</title>
+    <!-- Modern Typography from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Local Styled CSS Sheet -->
+    <link rel="stylesheet" href="css/site.css">
+</head>
+<body class="static-body">
+    <div class="glass-container">
+        <h1 class="gradient-title">Static Content Gateway</h1>
+        <p class="subtitle">This HTML page is served directly by the static files middleware.</p>
+        
+        <div class="info-card">
+            <h3>Middleware Audit Verification</h3>
+            <ul>
+                <li><strong>HTTPS Redirection</strong>: Fully Enforced</li>
+                <li><strong>Content Security Policy</strong>: Appended via Custom Middleware</li>
+                <li><strong>XSS Mitigation</strong>: active (local assets restricted only)</li>
+            </ul>
+        </div>
+
+        <div class="button-group">
+            <a href="/" class="btn primary-btn">Back to Razor Pages Home</a>
+            <button id="alert-btn" class="btn secondary-btn">Run Static Script Test</button>
+        </div>
+    </div>
+
+    <!-- Local Script Reference -->
+    <script src="js/site.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+@page
+@model ErrorModel
+@{
+    ViewData["Title"] = "Error";
+}
+
+<div class="glass-container" style="margin: 0 auto; max-width: 600px;">
+    <h1 style="color: #ef4444; font-size: 3rem; margin-top: 0;">Oops!</h1>
+    <h2 class="gradient-title" style="font-size: 1.75rem; margin-bottom: 1rem;">An unexpected error occurred.</h2>
+    
+    <p class="subtitle" style="margin-bottom: 2rem;">
+        The system has encountered a problem. The error has been logged, and our team has been notified. 
+        Detailed system trace is suppressed for safety and security.
+    </p>
+
+    @if (Model.ShowRequestId)
+    {
+        <div class="info-card" style="text-align: center; margin-bottom: 2rem; background: rgba(239, 68, 68, 0.05); border-color: rgba(239, 68, 68, 0.2);">
+            <p style="margin: 0; font-size: 0.95rem; color: var(--text-secondary);">
+                <strong>Reference Code (Request ID):</strong> 
+                <code style="color: #fca5a5; font-size: 1rem; font-family: monospace; background: rgba(0, 0, 0, 0.2); padding: 0.2rem 0.5rem; border-radius: 4px;">@Model.RequestId</code>
+            </p>
+        </div>
+    }
+
+    <div class="button-group">
+        <a asp-page="/Index" class="btn primary-btn">Return to Home</a>
+    </div>
+</div>

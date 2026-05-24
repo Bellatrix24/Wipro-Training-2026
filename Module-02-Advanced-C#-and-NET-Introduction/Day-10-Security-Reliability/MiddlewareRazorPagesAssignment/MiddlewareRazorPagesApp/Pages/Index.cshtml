@@ -1,0 +1,27 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="glass-container" style="margin: 0 auto;">
+    <h1 class="gradient-title">Wipro Day 10 Assignment</h1>
+    <p class="subtitle">Middleware &amp; Razor Pages Integration System</p>
+
+    <div class="info-card">
+        <h3>Assignment 1 Highlights:</h3>
+        <p style="color: var(--text-secondary); margin: 0 0 1rem 0; font-size: 0.95rem;">
+            Custom request logging, Content Security Policy header configuration, and secure static file management.
+        </p>
+        
+        <h3>Assignment 2 Highlights:</h3>
+        <p style="color: var(--text-secondary); margin: 0; font-size: 0.95rem;">
+            Razor Pages routing, custom PageModels, strong data bindings, and thread-safe in-memory model lists.
+        </p>
+    </div>
+
+    <div class="button-group">
+        <a asp-page="/Items" class="btn primary-btn">View Catalog Items</a>
+        <a asp-page="/AddItem" class="btn secondary-btn">Add New Item</a>
+    </div>
+</div>

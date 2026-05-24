@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Wipro Middleware Razor App</title>
+    <!-- Modern Typography from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet" />
+    <!-- Global CSS Stylesheet Link -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <header>
+        <nav class="header-nav">
+            <a class="logo-link" asp-page="/Index">Middleware & Razor Pages</a>
+            <div class="nav-links">
+                <a asp-page="/Index">Home</a>
+                <a asp-page="/Items">View Catalog</a>
+                <a asp-page="/AddItem">Add Item</a>
+                <a href="/index.html">Static HTML Demo</a>
+            </div>
+        </nav>
+    </header>
+    
+    <main role="main" class="container">
+        @RenderBody()
+    </main>
+
+    <footer class="footer-nav">
+        <div>
+            &copy; 2026 - Wipro Day 10 Assignment - Enforcing Security, Middleware &amp; Reliability
+        </div>
+    </footer>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
