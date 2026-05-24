@@ -1,0 +1,46 @@
+@page
+@model TagHelpersValidationApp.Pages.Feedback.ListModel
+@{
+    ViewData["Title"] = "Submitted Feedbacks";
+}
+
+@* Natural comment: List page displaying submitted feedbacks using custom star rating TagHelper. *@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Customer Feedback List</h2>
+        <a asp-page="/Feedback/Create" class="btn btn-success">Add New Feedback</a>
+    </div>
+
+    @if (Model.Feedbacks == null || !Model.Feedbacks.Any())
+    {
+        <div class="alert alert-info">
+            No feedback entries found. Be the first to leave a feedback!
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var feedback in Model.Feedbacks)
+            {
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <h5 class="card-title text-success mb-0">@feedback.Name</h5>
+                                @* Render stars dynamically using custom Tag Helper *@
+                                <rating-stars rating="@feedback.Rating" max-stars="5"></rating-stars>
+                            </div>
+                            <h6 class="card-subtitle text-muted mb-3">@feedback.Email</h6>
+                            <hr />
+                            <p class="card-text text-secondary">@feedback.Comments</p>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+
+    <div class="mt-4">
+        <a asp-page="/Index" class="btn btn-outline-secondary">Return Home</a>
+    </div>
+</div>

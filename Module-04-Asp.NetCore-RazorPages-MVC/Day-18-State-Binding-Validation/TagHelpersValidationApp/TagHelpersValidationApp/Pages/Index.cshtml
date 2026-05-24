@@ -1,0 +1,50 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container mt-5">
+    <div class="p-5 mb-4 bg-light rounded-3 border">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold text-primary">Wipro NGA Assignment: Module 04</h1>
+            <p class="col-md-8 fs-4 mt-3 text-secondary">
+                Welcome to Day 18 training submission. This project demonstrates 
+                <strong>Customer Feedback Portals</strong> (using custom HTML Helpers and Tag Helpers) and 
+                <strong>User Registration Systems</strong> (incorporating custom and built-in validation rules).
+            </p>
+            <hr class="my-4" />
+            <div class="d-flex flex-wrap gap-2">
+                <a asp-page="/Feedback/Create" class="btn btn-success btn-lg">Feedback Portal</a>
+                <a asp-page="/Registration/Create" class="btn btn-primary btn-lg">User Registration</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row align-items-stretch mt-4">
+        <div class="col-md-6 mb-4">
+            <div class="h-100 p-4 border bg-white rounded-3 shadow-sm">
+                <h3 class="text-success">Customer Feedback Portal</h3>
+                <p>Features implemented:</p>
+                <ul>
+                    <li>Form using <code>Html.TextBoxFor</code>, <code>Html.TextAreaFor</code>, and <code>Html.DropDownListFor</code> helpers.</li>
+                    <li>Custom <code>rating-stars</code> TagHelper rendering dynamic star graphics.</li>
+                    <li>Custom HTML Helper <code>@@Html.CustomInput</code> rendering styled placeholders.</li>
+                    <li>Dynamic list page looping over in-memory submissions.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="h-100 p-4 border bg-white rounded-3 shadow-sm">
+                <h3 class="text-primary">Registration & Validation</h3>
+                <p>Features implemented:</p>
+                <ul>
+                    <li>Built-in Data Annotations for Username, Email, and Password length/format.</li>
+                    <li>Custom validation attribute <code>[PasswordMatch]</code> verifying password matches confirmation entry.</li>
+                    <li>Full Validation Summary alongside inline error messages.</li>
+                    <li>Robust client-side validation libraries in the browser pipeline.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

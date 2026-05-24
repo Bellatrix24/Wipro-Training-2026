@@ -1,0 +1,30 @@
+@page
+@{
+    ViewData["Title"] = "Registration Success";
+}
+
+@* Natural comment: Registration success landing page when validation checks pass successfully. *@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8 text-center">
+            <div class="card shadow-sm border-success">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Registration Successful!</h4>
+                </div>
+                <div class="card-body p-5">
+                    <div class="text-success mb-4" style="font-size: 3em;">
+                        &#10004;
+                    </div>
+                    <h2>Congratulations!</h2>
+                    <p class="lead text-secondary my-3">
+                        Your account has been registered successfully. All client-side and server-side validation checks passed!
+                    </p>
+                    <div class="mt-4">
+                        <a asp-page="/Index" class="btn btn-primary">Return Home</a>
+                        <a asp-page="/Registration/Create" class="btn btn-outline-primary">Register Another Account</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
