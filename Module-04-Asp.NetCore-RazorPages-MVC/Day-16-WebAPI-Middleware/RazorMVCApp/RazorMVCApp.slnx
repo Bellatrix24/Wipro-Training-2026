@@ -1,0 +1,4 @@
+<Solution>
+  <Project Path="MVCAssignment/MVCAssignment.csproj" />
+  <Project Path="RazorPagesAssignment/RazorPagesAssignment.csproj" />
+</Solution>

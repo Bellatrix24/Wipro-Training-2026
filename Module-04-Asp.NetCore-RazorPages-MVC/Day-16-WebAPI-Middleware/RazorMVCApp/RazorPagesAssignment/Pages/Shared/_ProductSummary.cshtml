@@ -1,0 +1,30 @@
+@model RazorPagesAssignment.Models.Product
+
+@* Natural comment: Reusable partial view to show a summary of each product *@
+<div class="card mb-3 shadow-sm">
+    <div class="card-body">
+        <h5 class="card-title text-primary">@Model.Name</h5>
+        <h6 class="card-subtitle mb-2 text-muted">Product ID: @Model.ProductID</h6>
+        <p class="card-text">@Model.Description</p>
+        
+        <div class="mb-3">
+            <strong>Categories:</strong>
+            @if (Model.Categories != null && Model.Categories.Any())
+            {
+                foreach (var category in Model.Categories)
+                {
+                    <span class="badge bg-secondary me-1">@category.Name</span>
+                }
+            }
+            else
+            {
+                <span class="text-muted italic">None</span>
+            }
+        </div>
+        
+        @* Link to the Details page using custom routing *@
+        <a asp-page="/Products/Details" asp-route-id="@Model.ProductID" class="btn btn-sm btn-outline-primary">
+            View Details
+        </a>
+    </div>
+</div>

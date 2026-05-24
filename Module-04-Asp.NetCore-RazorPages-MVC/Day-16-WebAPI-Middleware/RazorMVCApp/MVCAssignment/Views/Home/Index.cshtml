@@ -1,0 +1,59 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container mt-5">
+    <div class="p-5 mb-4 bg-light rounded-3 border">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold text-primary">Wipro NGA Assignment: Module 04</h1>
+            <p class="col-md-8 fs-4 mt-3 text-secondary">
+                Welcome to Part 2 of this .NET training submission. This project demonstrates 
+                <strong>MVC Pattern and Model Binding</strong>, including simple fields and complex nested 
+                address parameters inside a single controller-view pipeline.
+            </p>
+            <hr class="my-4" />
+            <div class="d-flex flex-wrap gap-2">
+                <a asp-controller="User" asp-action="Create" class="btn btn-primary btn-lg">Go to User Form</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row align-items-stretch mt-4">
+        <div class="col-md-6 mb-4">
+            <div class="h-100 p-4 border bg-white rounded-3 shadow-sm">
+                <h3 class="text-success">MVC Features Showcased</h3>
+                <ul class="mt-3">
+                    <li><strong>Simple Model Binding:</strong> Captures user's first name, last name, and age.</li>
+                    <li><strong>Complex Model Binding:</strong> Implements nested complex <code>Address</code> class parameters containing Street, City, and ZipCode.</li>
+                    <li><strong>Separation of Concerns:</strong> Demonstrates strict MVC isolation between data models, Razor views, and transactional controllers.</li>
+                    <li><strong>Validation Attributes:</strong> Field range and formatting checks with custom error messages.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="h-100 p-4 border bg-white rounded-3 shadow-sm">
+                <h3 class="text-success">Submission Context</h3>
+                <table class="table table-bordered mt-3">
+                    <tbody>
+                        <tr>
+                            <td><strong>Trainee</strong></td>
+                            <td>Project Engineer Trainee (NGA)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Curriculum</strong></td>
+                            <td>Wipro 2026 Training</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Target Module</strong></td>
+                            <td>Module 04 (ASP.NET Core Web Applications)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Exercise Day</strong></td>
+                            <td>Day 16 (Web API & Middleware Pipelines)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,69 @@
+@page
+@model RazorPagesAssignment.Pages.Products.CreateModel
+@{
+    ViewData["Title"] = "Add New Product";
+}
+
+@* Natural comment: Form page to create a product. Demonstrates complex category checklist binding. *@
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0">Add New Product</h4>
+                </div>
+                <div class="card-body">
+                    <form method="post">
+                        
+                        <div class="mb-3">
+                            <label asp-for="Product.ProductID" class="form-label font-weight-bold"></label>
+                            <input asp-for="Product.ProductID" class="form-control" type="number" placeholder="Enter numerical ID (e.g. 103)" />
+                            <span asp-validation-for="Product.ProductID" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Product.Name" class="form-label font-weight-bold"></label>
+                            <input asp-for="Product.Name" class="form-control" placeholder="Enter product name" />
+                            <span asp-validation-for="Product.Name" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-3">
+                            <label asp-for="Product.Description" class="form-label font-weight-bold"></label>
+                            <textarea asp-for="Product.Description" class="form-control" rows="3" placeholder="Enter product description"></textarea>
+                            <span asp-validation-for="Product.Description" class="text-danger"></span>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label font-weight-bold d-block">Select Categories</label>
+                            <small class="form-text text-muted mb-2 d-block">Check all categories that apply to this product:</small>
+                            <div class="row">
+                                @foreach (var category in Model.AvailableCategories)
+                                {
+                                    <div class="col-sm-6 mb-2">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="SelectedCategoryIds" value="@category.CategoryID" id="category_@category.CategoryID" 
+                                                   @(Model.SelectedCategoryIds.Contains(category.CategoryID) ? "checked" : "") />
+                                            <label class="form-check-label" for="category_@category.CategoryID">
+                                                @category.Name
+                                            </label>
+                                        </div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between">
+                            <a asp-page="/Products/Index" class="btn btn-outline-secondary">Back to List</a>
+                            <button type="submit" class="btn btn-success">Create Product</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

@@ -1,0 +1,32 @@
+@page
+@model RazorPagesAssignment.Pages.Products.IndexModel
+@{
+    ViewData["Title"] = "Products List";
+}
+
+@* Natural comment: Products view page that renders products list using a partial view *@
+<div class="container mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Products List</h2>
+        <a asp-page="/Products/Create" class="btn btn-success">Add New Product</a>
+    </div>
+
+    @if (Model.Products == null || !Model.Products.Any())
+    {
+        <div class="alert alert-info">
+            No products found. Click "Add New Product" to create one!
+        </div>
+    }
+    else
+    {
+        <div class="row">
+            @foreach (var product in Model.Products)
+            {
+                <div class="col-md-6 col-lg-4">
+                    @* Render each product with the reusable partial view *@
+                    <partial name="_ProductSummary" model="product" />
+                </div>
+            }
+        </div>
+    }
+</div>

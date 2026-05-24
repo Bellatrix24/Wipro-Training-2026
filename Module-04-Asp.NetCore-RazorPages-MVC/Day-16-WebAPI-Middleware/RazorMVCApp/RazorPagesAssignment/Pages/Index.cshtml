@@ -1,0 +1,62 @@
+@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home";
+}
+
+<div class="container mt-5">
+    <div class="p-5 mb-4 bg-light rounded-3 border">
+        <div class="container-fluid py-5">
+            <h1 class="display-5 fw-bold text-success">Wipro NGA Assignment: Module 04</h1>
+            <p class="col-md-8 fs-4 mt-3 text-secondary">
+                Welcome to Part 1 of this .NET training submission. This project demonstrates 
+                <strong>Advanced Razor Pages Implementation</strong>, including complex model binding 
+                for lists and dynamic custom route mapping.
+            </p>
+            <hr class="my-4" />
+            <div class="d-flex flex-wrap gap-2">
+                <a asp-page="/Products/Index" class="btn btn-success btn-lg">Explore Products Section</a>
+                <a asp-page="/Products/Create" class="btn btn-outline-success btn-lg">Add New Product</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="row align-items-stretch mt-4">
+        <div class="col-md-6 mb-4">
+            <div class="h-100 p-4 border bg-white rounded-3 shadow-sm">
+                <h3 class="text-primary">Key Features Showcased</h3>
+                <ul class="mt-3">
+                    <li><strong>Product Catalog:</strong> Simple in-memory storage holding dynamic list records.</li>
+                    <li><strong>Complex Model Binding:</strong> Checkbox tags binding directly to a nested <code>List&lt;Category&gt;</code> model.</li>
+                    <li><strong>Reusable Layout & Parts:</strong> Rendering cards using an independent <code>_ProductSummary</code> partial view.</li>
+                    <li><strong>Custom Dynamic Routing:</strong> Access product details using parameters in the format <code>/Products/{id}</code>.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="h-100 p-4 border bg-white rounded-3 shadow-sm">
+                <h3 class="text-primary">Submission Context</h3>
+                <table class="table table-bordered mt-3">
+                    <tbody>
+                        <tr>
+                            <td><strong>Trainee</strong></td>
+                            <td>Project Engineer Trainee (NGA)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Curriculum</strong></td>
+                            <td>Wipro 2026 Training</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Target Module</strong></td>
+                            <td>Module 04 (ASP.NET Core Web Applications)</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Exercise Day</strong></td>
+                            <td>Day 16 (Web API & Middleware Pipelines)</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
