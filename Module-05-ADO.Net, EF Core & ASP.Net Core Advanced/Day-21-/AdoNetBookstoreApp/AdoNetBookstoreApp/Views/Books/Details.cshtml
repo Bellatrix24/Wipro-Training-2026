@@ -1,0 +1,35 @@
+@model AdoNetBookstoreApp.Models.Book
+@{
+    ViewData["Title"] = Model.Title + " Details";
+}
+
+<h2>Book Details</h2>
+<p class="text-muted">Retrieved using a secure <strong>parameterized SQL query</strong> to protect against injection.</p>
+
+<div class="card mt-3" style="max-width: 600px;">
+    <div class="card-header bg-primary text-white">
+        @Model.Title
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Book ID</dt>
+            <dd class="col-sm-9">@Model.BookId</dd>
+
+            <dt class="col-sm-3">Title</dt>
+            <dd class="col-sm-9">@Model.Title</dd>
+
+            <dt class="col-sm-3">Author</dt>
+            <dd class="col-sm-9">@Model.Author</dd>
+
+            <dt class="col-sm-3">ISBN</dt>
+            <dd class="col-sm-9">@Model.ISBN</dd>
+
+            <dt class="col-sm-3">Price</dt>
+            <dd class="col-sm-9"><strong>$@Model.Price.ToString("F2")</strong></dd>
+        </dl>
+        
+        <hr />
+        <a asp-action="Edit" asp-route-id="@Model.BookId" class="btn btn-secondary">Edit Details</a>
+        <a asp-action="Index" class="btn btn-link">Back to Catalog</a>
+    </div>
+</div>

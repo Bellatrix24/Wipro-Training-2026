@@ -1,0 +1,64 @@
+@{
+    ViewData["Title"] = "SQL Injection Demo";
+    var searchInput = ViewBag.SearchInput as string;
+    var unsafeQuery = ViewBag.UnsafeQuery as string;
+    var safeQuery = ViewBag.SafeQuery as string;
+    var parameterDeclaration = ViewBag.ParameterDeclaration as string;
+}
+
+<h2>SQL Injection Defense Console</h2>
+<p class="text-muted">Enter input below to analyze how dynamic concatenation compromises security compared to parameterized queries.</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body bg-light">
+            <h4>Simulate Search Query</h4>
+            <form method="get" action="/SqlInjectionDemo">
+                <div class="mb-3">
+                    <label for="searchInput" class="form-label">Search Book Title</label>
+                    <input type="text" id="searchInput" name="searchInput" class="form-control" value="@searchInput" placeholder="e.g. ADO.NET Fundamentals" />
+                </div>
+                <button type="submit" class="btn btn-primary btn-sm">Generate Query Simulation</button>
+                <a href="/SqlInjectionDemo?searchInput=' OR '1'='1" class="btn btn-danger btn-sm mx-1">Inject Unsafe Query Payload</a>
+            </form>
+        </div>
+    </div>
+    
+    <div class="col-md-6 mt-3 mt-md-0">
+        <div class="card card-body bg-light">
+            <h5>Concept Viva Check</h5>
+            <p><strong>SQL Injection:</strong> Occurs when user inputs are concatenated directly into SQL command strings, allowing attackers to manipulate queries to access private databases or bypass validation rules.</p>
+            <p><strong>Prevention:</strong> We must compile standard SQL queries with parameter placeholders (like <code>@@Title</code>). Parameters are validated and treated purely as literals, rendering payload strings harmless.</p>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-4">
+    <div class="col-md-6">
+        <div class="card border-danger">
+            <div class="card-header bg-danger text-white font-weight-bold">
+                Unsafe Dynamic SQL (Concatenation)
+            </div>
+            <div class="card-body bg-light" style="font-family: monospace; font-size: 0.9rem;">
+                <code class="text-danger">@unsafeQuery</code>
+                <hr />
+                <p class="text-muted small mb-0">If the input contains quotes, the command syntax splits, allowing arbitrary SQL execution.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mt-3 mt-md-0">
+        <div class="card border-success">
+            <div class="card-header bg-success text-white font-weight-bold">
+                Safe Parameterized SQL (SqlCommand Parameters)
+            </div>
+            <div class="card-body bg-light" style="font-family: monospace; font-size: 0.9rem;">
+                <code class="text-success">@safeQuery</code>
+                <br />
+                <span class="text-secondary small">@parameterDeclaration</span>
+                <hr />
+                <p class="text-muted small mb-0">The database driver processes variables strictly as literals, stripping out injection risks entirely.</p>
+            </div>
+        </div>
+    </div>
+</div>
