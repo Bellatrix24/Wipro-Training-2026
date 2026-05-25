@@ -1,0 +1,40 @@
+@{
+    ViewData["Title"] = "Database Security Portal";
+}
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="p-4 bg-light rounded border">
+            <h2>Database Security Portal</h2>
+            <hr />
+            <p class="lead">Demonstrating defensive secure coding and database protection mechanisms in ASP.NET Core.</p>
+            <p>This portal showcases key security requirements: parameterization of queries to prevent SQL Injection, secure storage of user credentials using strong hashing algorithms, cryptographic AES encryption of sensitive fields, and constant-time HMAC-SHA256 checksum validations to check for data tampering.</p>
+            
+            <div class="row mt-4">
+                <div class="col-md-4">
+                    <h5>AES Data Encryption</h5>
+                    <p class="small text-muted">Protects highly sensitive data columns at rest in the database, avoiding raw plain-text storage.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>HMAC Integrity Verification</h5>
+                    <p class="small text-muted">Ensures records are not modified by malicious external SQL operations by verifying dynamic signatures.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Suspicious-Access Audits</h5>
+                    <p class="small text-muted">Automatically triggers system flags and audit entries upon failed auth or signature checks.</p>
+                </div>
+            </div>
+            
+            <div class="mt-4">
+                @if (User.Identity?.IsAuthenticated == true)
+                {
+                    <a asp-controller="Profile" asp-action="SecureRecords" class="btn btn-primary btn-sm">Explore Secure Records</a>
+                }
+                else
+                {
+                    <a asp-controller="Account" asp-action="Login" class="btn btn-primary btn-sm">Sign In to Continue</a>
+                }
+            </div>
+        </div>
+    </div>
+</div>

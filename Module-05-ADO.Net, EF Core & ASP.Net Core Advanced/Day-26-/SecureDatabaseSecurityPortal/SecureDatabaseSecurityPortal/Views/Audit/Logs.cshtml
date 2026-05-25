@@ -1,0 +1,53 @@
+@model IEnumerable<SecureDatabaseSecurityPortal.Models.AuditLog>
+@{
+    ViewData["Title"] = "Security Audit Trail Logs";
+}
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <h2>Security Audit Trail Logs</h2>
+        <p class="text-muted small">Real-time log tracking for database modifications, user sign-in results, and potential intrusion events.</p>
+
+        @if (!Model.Any())
+        {
+            <div class="alert alert-info">
+                No logs recorded yet.
+            </div>
+        }
+        else
+        {
+            <table class="table table-bordered table-striped align-middle small">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Timestamp</th>
+                        <th>User Email</th>
+                        <th>Action</th>
+                        <th>Details</th>
+                        <th>Suspicious Attempt</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var log in Model)
+                    {
+                        <tr class="@(log.IsSuspicious ? "table-danger" : "")">
+                            <td>@log.Timestamp.ToString("yyyy-MM-dd HH:mm:ss")</td>
+                            <td><strong>@log.UserEmail</strong></td>
+                            <td>@log.Action</td>
+                            <td>@log.Details</td>
+                            <td>
+                                @if (log.IsSuspicious)
+                                {
+                                    <span class="badge bg-danger">HIGH RISK / ALERT</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-success">NORMAL</span>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
