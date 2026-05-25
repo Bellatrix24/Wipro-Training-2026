@@ -1,0 +1,32 @@
+@model IEnumerable<AdvancedLibraryManagementSystem.Models.Author>
+@{
+    ViewData["Title"] = "Authors";
+}
+
+<h2>Authors</h2>
+<button class="btn btn-primary btn-sm mb-3" onclick="loadForm('/Authors/Create', 'Add Author')">Add Author</button>
+
+<table class="table table-bordered table-sm">
+    <thead class="table-light">
+        <tr>
+            <th>Name</th>
+            <th>Bio</th>
+            <th>Books</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var author in Model)
+        {
+            <tr id="author-@author.AuthorID">
+                <td>@author.Name</td>
+                <td>@author.Bio</td>
+                <td>@author.Books.Count</td>
+                <td>
+                    <button class="btn btn-warning btn-sm" onclick="loadForm('/Authors/Edit/@author.AuthorID', 'Edit Author')">Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteItem('/Authors/Delete/@author.AuthorID', 'author-@author.AuthorID')">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

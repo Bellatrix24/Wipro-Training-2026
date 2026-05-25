@@ -1,0 +1,24 @@
+@model AdvancedLibraryManagementSystem.Models.Author
+
+@{
+    var isEdit = Model.AuthorID != 0;
+    var action = isEdit ? "Edit" : "Create";
+}
+
+<form id="authorForm" asp-controller="Authors" asp-action="@action" method="post">
+    @Html.AntiForgeryToken()
+    @if (isEdit)
+    {
+        <input type="hidden" asp-for="AuthorID" />
+    }
+    <div class="mb-2">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label asp-for="Bio" class="form-label"></label>
+        <textarea asp-for="Bio" class="form-control" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+</form>

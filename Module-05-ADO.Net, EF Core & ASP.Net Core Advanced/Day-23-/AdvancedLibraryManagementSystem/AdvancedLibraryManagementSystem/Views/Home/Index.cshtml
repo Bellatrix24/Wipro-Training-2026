@@ -1,0 +1,11 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h2>Library Management System</h2>
+<p>Use the navigation above to manage books, authors, and genres.</p>
+<ul>
+    <li><a asp-controller="Books" asp-action="Index">Books</a> - Browse, search, filter, add, edit, delete books</li>
+    <li><a asp-controller="Authors" asp-action="Index">Authors</a> - Manage authors</li>
+    <li><a asp-controller="Genres" asp-action="Index">Genres</a> - Manage genres</li>
+</ul>

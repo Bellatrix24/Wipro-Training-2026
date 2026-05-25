@@ -1,0 +1,20 @@
+@model AdvancedLibraryManagementSystem.Models.Genre
+
+@{
+    var isEdit = Model.GenreID != 0;
+    var action = isEdit ? "Edit" : "Create";
+}
+
+<form id="genreForm" asp-controller="Genres" asp-action="@action" method="post">
+    @Html.AntiForgeryToken()
+    @if (isEdit)
+    {
+        <input type="hidden" asp-for="GenreID" />
+    }
+    <div class="mb-2">
+        <label asp-for="Name" class="form-label"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary btn-sm">Save</button>
+    <button type="button" class="btn btn-secondary btn-sm" data-bs-dismiss="modal">Cancel</button>
+</form>

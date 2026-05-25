@@ -1,0 +1,28 @@
+@model IEnumerable<AdvancedLibraryManagementSystem.Models.Genre>
+@{
+    ViewData["Title"] = "Genres";
+}
+
+<h2>Genres</h2>
+<button class="btn btn-primary btn-sm mb-3" onclick="loadForm('/Genres/Create', 'Add Genre')">Add Genre</button>
+
+<table class="table table-bordered table-sm">
+    <thead class="table-light">
+        <tr>
+            <th>Name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var genre in Model)
+        {
+            <tr id="genre-@genre.GenreID">
+                <td>@genre.Name</td>
+                <td>
+                    <button class="btn btn-warning btn-sm" onclick="loadForm('/Genres/Edit/@genre.GenreID', 'Edit Genre')">Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="deleteItem('/Genres/Delete/@genre.GenreID', 'genre-@genre.GenreID')">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
