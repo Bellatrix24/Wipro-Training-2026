@@ -1,0 +1,82 @@
+@model SecureTaskManagementPlatform.Models.TaskItem
+@{
+    ViewData["Title"] = "Task Details";
+}
+
+<div class="row justify-content-center mt-4">
+    <div class="col-md-8">
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Task Details</h5>
+                <div>
+                    @if (Model.IsCompleted)
+                    {
+                        <span class="badge bg-success">Completed</span>
+                    }
+                    else
+                    {
+                        <span class="badge bg-warning">Pending</span>
+                    }
+                </div>
+            </div>
+            <div class="card-body">
+                <h3 class="card-title text-primary">@Html.DisplayFor(model => model.Title)</h3>
+                <p class="card-text text-muted">@Html.DisplayFor(model => model.Description)</p>
+                
+                <hr />
+                
+                <div class="row small">
+                    <div class="col-sm-6">
+                        <strong>Assigned To:</strong> @Model.User?.FullName (@Model.User?.Email)
+                    </div>
+                    <div class="col-sm-6 text-sm-end">
+                        <strong>Due Date:</strong> @Model.DueDate.ToString("dd-MMM-yyyy")
+                    </div>
+                </div>
+            </div>
+            <div class="card-footer d-flex gap-2">
+                @if (User.HasClaim("CanEditTask", "true"))
+                {
+                    <a asp-action="Edit" asp-route-id="@Model.TaskId" class="btn btn-warning btn-sm">Edit Task</a>
+                }
+                <a href="/" class="btn btn-secondary btn-sm">Back to Dashboard</a>
+            </div>
+        </div>
+
+        <div class="card shadow-sm mb-4">
+            <div class="card-header bg-secondary text-white">
+                <h6 class="mb-0">Task Comments</h6>
+            </div>
+            <div class="card-body">
+                @if (!Model.Comments.Any())
+                {
+                    <p class="text-muted small">No comments yet. Be the first to comment!</p>
+                }
+                else
+                {
+                    @foreach (var c in Model.Comments.OrderBy(com => com.CreatedAt))
+                    {
+                        <div class="p-2 mb-2 border rounded bg-light">
+                            <div class="d-flex justify-content-between small text-muted mb-1">
+                                <strong>@c.User?.FullName (@c.User?.Email)</strong>
+                                <span>@c.CreatedAt.ToString("g")</span>
+                            </div>
+                            <div style="white-space: pre-line;">@Html.DisplayFor(model => c.Content)</div>
+                        </div>
+                    }
+                }
+
+                <hr />
+
+                <form asp-action="AddComment" method="post" class="mt-3">
+                    <input type="hidden" name="taskId" value="@Model.TaskId" />
+                    <div class="mb-3">
+                        <label for="content" class="form-label small">Add a Comment</label>
+                        <textarea id="content" name="content" class="form-control form-control-sm" rows="3" required placeholder="Type your comment..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-sm">Post Comment</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

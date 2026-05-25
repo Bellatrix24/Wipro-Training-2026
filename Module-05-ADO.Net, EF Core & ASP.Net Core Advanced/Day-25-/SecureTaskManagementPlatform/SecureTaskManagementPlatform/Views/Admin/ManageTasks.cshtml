@@ -1,0 +1,69 @@
+@model IEnumerable<SecureTaskManagementPlatform.Models.TaskItem>
+@{
+    ViewData["Title"] = "Manage All Tasks";
+    var canEdit = User.HasClaim("CanEditTask", "true");
+}
+
+<div class="row mt-4">
+    <div class="col-md-12">
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <h2>Admin Task Management</h2>
+            <a asp-controller="Tasks" asp-action="Create" class="btn btn-primary btn-sm">Create New Task</a>
+        </div>
+        <p class="text-muted">You are logged in as an <strong>Administrator</strong>. You can view all tasks from all users in the platform.</p>
+
+        @if (!Model.Any())
+        {
+            <div class="alert alert-info">
+                No tasks are currently present in the system.
+            </div>
+        }
+        else
+        {
+            <table class="table table-hover table-bordered align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Owner</th>
+                        <th>Title</th>
+                        <th>Description</th>
+                        <th>Due Date</th>
+                        <th>Status</th>
+                        <th style="width: 180px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td><span class="badge bg-primary">@item.User?.Email</span></td>
+                            <td><strong>@Html.DisplayFor(modelItem => item.Title)</strong></td>
+                            <td>@Html.DisplayFor(modelItem => item.Description)</td>
+                            <td>@item.DueDate.ToString("dd-MMM-yyyy")</td>
+                            <td>
+                                @if (item.IsCompleted)
+                                {
+                                    <span class="badge bg-success">Completed</span>
+                                }
+                                else
+                                {
+                                    <span class="badge bg-secondary">Pending</span>
+                                }
+                            </td>
+                            <td>
+                                <a asp-controller="Tasks" asp-action="Details" asp-route-id="@item.TaskId" class="btn btn-info btn-sm">Details</a>
+                                @if (canEdit)
+                                {
+                                    <a asp-controller="Tasks" asp-action="Edit" asp-route-id="@item.TaskId" class="btn btn-warning btn-sm">Edit</a>
+                                }
+                                else
+                                {
+                                    <button class="btn btn-warning btn-sm" disabled>Edit 🔒</button>
+                                }
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
