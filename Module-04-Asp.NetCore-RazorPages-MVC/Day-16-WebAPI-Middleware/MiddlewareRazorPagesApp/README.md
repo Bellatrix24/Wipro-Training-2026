@@ -4,7 +4,7 @@ This project represents a professional student submission for Module 04 (ASP.NET
 
 ---
 
-## 📂 Implemented Features
+## Implemented Features
 
 ### Part 1: Building a .NET Core Application with Middleware
 * **Request & Response Logging**: Implemented in `RequestResponseLoggingMiddleware.cs` using standard ASP.NET logging. It captures and logs the request HTTP method, request path, and the outgoing status code to the server console log.
@@ -21,7 +21,7 @@ This project represents a professional student submission for Module 04 (ASP.NET
 
 ---
 
-## 💻 How to Run the App
+## How to Run the App
 
 Ensure you have the .NET SDK installed (minimum version .NET 8).
 
@@ -46,7 +46,7 @@ Take note of the local address listed in the output (typically http://localhost:
 
 ---
 
-## 🎯 Testing and Routes Checklist
+## Testing and Routes Checklist
 
 ### Static Files Routes (served directly from wwwroot)
 * **Static HTML Page**: `http://localhost:<port>/index.html` - Static landing page.
@@ -61,6 +61,6 @@ Take note of the local address listed in the output (typically http://localhost:
 
 ---
 
-## 📋 Git Hygiene & Storage Info
+## Git Hygiene & Storage Info
 * **Memory-Only Storage**: All item records added during runtime are appended to in-memory static collections only and will reset when the application process terminates.
 * **No Build Artifacts**: The parent `.gitignore` file automatically filters build folders (`bin/`, `obj/`) to prevent committing temporary artifacts to GitHub.
