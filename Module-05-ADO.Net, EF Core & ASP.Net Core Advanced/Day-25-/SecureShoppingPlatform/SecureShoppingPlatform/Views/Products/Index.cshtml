@@ -1,0 +1,35 @@
+@model IEnumerable<Product>
+@{
+    ViewData["Title"] = "Products";
+}
+
+<h2>Products</h2>
+
+<table class="table table-bordered table-sm">
+    <thead class="table-light">
+        <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>Stock</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var product in Model)
+        {
+            <tr>
+                <td>@product.Name</td>
+                <td>@product.Description</td>
+                <td>@product.Price.ToString("C")</td>
+                <td>@product.Stock</td>
+                <td>
+                    @if (User.IsInRole("Customer"))
+                    {
+                        <a asp-action="Purchase" asp-route-id="@product.ProductId" class="btn btn-primary btn-sm">Buy</a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

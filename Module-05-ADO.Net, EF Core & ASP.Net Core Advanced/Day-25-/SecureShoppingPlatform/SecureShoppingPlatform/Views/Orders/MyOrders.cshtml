@@ -1,0 +1,35 @@
+@model IEnumerable<Order>
+@{
+    ViewData["Title"] = "My Orders";
+}
+
+<h2>My Orders</h2>
+
+<table class="table table-bordered table-sm">
+    <thead class="table-light">
+        <tr>
+            <th>Order Id</th>
+            <th>Date</th>
+            <th>Items</th>
+            <th>Total</th>
+            <th>Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderId</td>
+                <td>@order.OrderDate.ToString("dd-MMM-yyyy")</td>
+                <td>
+                    @foreach (var item in order.OrderItems)
+                    {
+                        <div>@item.Product?.Name x @item.Quantity</div>
+                    }
+                </td>
+                <td>@order.TotalAmount.ToString("C")</td>
+                <td>@order.ShippingAddress</td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,5 @@
+-- Seed users are created by Data/DbSeeder.cs when the application starts.
+-- ASP.NET Core Identity generates salted password hashes, so fixed password hashes are not inserted here.
+--
+-- admin@example.com / Password@123 / Admin
+-- customer@example.com / Password@123 / Customer
