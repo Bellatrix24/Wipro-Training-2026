@@ -4,14 +4,14 @@ This solution represents a professional student submission for Module 04 (ASP.NE
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 * **RazorPagesAssignment**: An advanced Razor Pages application focused on complex model binding, dynamic route mapping, and partial view reuse.
 * **MVCAssignment**: A Model-View-Controller application demonstrating strict separation of concerns, nested complex model binding, and form validation pipelines.
 
 ---
 
-## 🚀 Implemented Features
+## Implemented Features
 
 ### Part 1: Advanced Razor Pages Implementation (RazorPagesAssignment)
 * **In-Memory Store**: Uses static lists in `ProductStore.cs` to manage catalog data dynamically without database dependencies.
@@ -28,7 +28,7 @@ This solution represents a professional student submission for Module 04 (ASP.NE
 
 ---
 
-## 💻 How to Run the Projects
+## How to Run the Projects
 
 Ensure you have the .NET SDK installed (minimum version .NET 8).
 
@@ -58,7 +58,7 @@ dotnet run --project MVCAssignment
 
 ---
 
-## 🎯 Testing and Routes Checklist
+## Testing and Routes Checklist
 
 ### Razor Pages Test Routes
 * **Home Page**: `http://localhost:<port>/` - Introduces the trainee portfolio.
