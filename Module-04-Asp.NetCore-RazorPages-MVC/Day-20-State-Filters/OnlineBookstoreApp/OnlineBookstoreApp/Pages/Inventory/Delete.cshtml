@@ -1,0 +1,36 @@
+@page "{id:int}"
+@model OnlineBookstoreApp.Pages.Inventory.DeleteModel
+@{
+    ViewData["Title"] = "Delete Book";
+}
+
+<h2>Confirm Book Deletion</h2>
+<p class="text-danger">Warning: This action is permanent and will remove this book from the catalog.</p>
+
+<div class="card bg-light mt-3" style="max-width: 600px;">
+    <div class="card-header bg-danger text-white">
+        Delete Book Catalog Confirmation
+    </div>
+    <div class="card-body">
+        <h5>Are you sure you want to delete the following book?</h5>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-4">Title</dt>
+            <dd class="col-sm-8">@Model.Book.Title</dd>
+
+            <dt class="col-sm-4">Author</dt>
+            <dd class="col-sm-8">@Model.Book.Author</dd>
+
+            <dt class="col-sm-4">ISBN</dt>
+            <dd class="col-sm-8">@Model.Book.ISBN</dd>
+
+            <dt class="col-sm-4">Price</dt>
+            <dd class="col-sm-8">$@Model.Book.Price.ToString("F2")</dd>
+        </dl>
+        
+        <form method="post">
+            <button type="submit" class="btn btn-danger">Confirm Delete</button>
+            <a href="/Books" class="btn btn-secondary">Cancel</a>
+        </form>
+    </div>
+</div>

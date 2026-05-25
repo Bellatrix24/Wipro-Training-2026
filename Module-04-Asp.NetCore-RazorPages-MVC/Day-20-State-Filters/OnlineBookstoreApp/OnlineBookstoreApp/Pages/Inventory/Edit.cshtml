@@ -1,0 +1,46 @@
+@page "{id:int}"
+@model OnlineBookstoreApp.Pages.Inventory.EditModel
+@{
+    ViewData["Title"] = "Edit Book";
+}
+
+<h2>Edit Book Details</h2>
+<p class="text-muted">Protected by AuthFilter and RoleFilter. Only administrators can save adjustments.</p>
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body bg-light mt-3">
+            <form method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="Book.Id" />
+
+                <div class="form-group mb-3">
+                    <label asp-for="Book.Title" class="form-label"></label>
+                    <input asp-for="Book.Title" class="form-control" />
+                    <span asp-validation-for="Book.Title" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Book.Author" class="form-label"></label>
+                    <input asp-for="Book.Author" class="form-control" />
+                    <span asp-validation-for="Book.Author" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Book.ISBN" class="form-label"></label>
+                    <input asp-for="Book.ISBN" class="form-control" />
+                    <span asp-validation-for="Book.ISBN" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Book.Price" class="form-label"></label>
+                    <input asp-for="Book.Price" class="form-control" type="number" step="0.01" />
+                    <span asp-validation-for="Book.Price" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success">Save Changes</button>
+                <a href="/Books" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+</div>

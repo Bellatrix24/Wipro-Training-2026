@@ -1,0 +1,20 @@
+@{
+    ViewData["Title"] = "Error";
+    var errorMessage = ViewData["ErrorMessage"] as string ?? "An unexpected error occurred during request processing.";
+}
+
+<h2>System Error</h2>
+<div class="alert alert-danger mt-3">
+    <h4>Unhandled Exception Intercepted</h4>
+    <p><strong>Error Message:</strong> @errorMessage</p>
+</div>
+
+<div class="card mt-3">
+    <div class="card-header bg-dark text-white">
+        GlobalExceptionFilter Diagnostic Console
+    </div>
+    <div class="card-body">
+        <p>This exception was caught by the bookstore's global exception handler, which prevented a full thread crash, logged the detailed trace to standard diagnostics, and rendered this error message.</p>
+        <a href="/Books" class="btn btn-secondary">Return to Catalog</a>
+    </div>
+</div>

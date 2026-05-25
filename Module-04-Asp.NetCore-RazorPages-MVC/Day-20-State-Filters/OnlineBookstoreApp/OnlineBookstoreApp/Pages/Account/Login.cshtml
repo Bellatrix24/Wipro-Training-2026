@@ -1,0 +1,47 @@
+@page
+@model OnlineBookstoreApp.Pages.Account.LoginModel
+@{
+    ViewData["Title"] = "Login";
+}
+
+<h2>User Sign In</h2>
+<p class="text-muted">Sign in using an in-memory user account to access shopping and administrative inventory features.</p>
+
+@if (TempData["Success"] != null)
+{
+    <div class="alert alert-success">@TempData["Success"]</div>
+}
+
+<div class="row">
+    <div class="col-md-6">
+        <div class="card card-body bg-light mt-3">
+            <form method="post">
+                <div asp-validation-summary="All" class="text-danger"></div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Username" class="form-label"></label>
+                    <input asp-for="Username" class="form-control" placeholder="Enter username" />
+                    <span asp-validation-for="Username" class="text-danger"></span>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label asp-for="Password" class="form-label"></label>
+                    <input asp-for="Password" class="form-control" type="password" placeholder="Enter password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-success">Login</button>
+                <a asp-page="/Account/Register" class="btn btn-link">Don't have an account? Register here</a>
+            </form>
+        </div>
+
+        <div class="card card-body bg-light mt-3">
+            <h5>Mock Credentials Checklist</h5>
+            <p class="small text-muted">Use these pre-registered users to test different permission filters:</p>
+            <ul>
+                <li><strong>Admin Account:</strong> Username: <code>admin</code> | Password: <code>admin123</code></li>
+                <li><strong>Customer Account:</strong> Username: <code>customer</code> | Password: <code>customer123</code></li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+@model OnlineBookstoreApp.Models.Book
+@{
+    ViewData["Title"] = Model.Title + " Details";
+}
+
+<h2>Book Details</h2>
+<p class="text-muted">Detailed overview of the selected book item.</p>
+
+<div class="card mt-3" style="max-width: 600px;">
+    <div class="card-header bg-info text-white">
+        @Model.Title
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">Title</dt>
+            <dd class="col-sm-9">@Model.Title</dd>
+
+            <dt class="col-sm-3">Author</dt>
+            <dd class="col-sm-9">@Model.Author</dd>
+
+            <dt class="col-sm-3">ISBN</dt>
+            <dd class="col-sm-9">@Model.ISBN</dd>
+
+            <dt class="col-sm-3">Price</dt>
+            <dd class="col-sm-9"><strong>$@Model.Price.ToString("F2")</strong></dd>
+        </dl>
+        
+        <hr />
+        <a href="/Cart/Add/@Model.Id" class="btn btn-primary">Add to Cart</a>
+        <a href="/Books" class="btn btn-secondary">Back to Catalog</a>
+    </div>
+</div>
