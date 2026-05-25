@@ -77,12 +77,21 @@
 <div class="d-flex gap-2">
     @if (ViewBag.CurrentPage > 1)
     {
-        <a asp-action="Index" asp-route-page="@(ViewBag.CurrentPage - 1)" class="btn btn-outline-secondary btn-sm">Previous</a>
+        <a asp-action="Index" 
+           asp-route-page="@(ViewBag.CurrentPage - 1)" 
+           asp-route-title="@ViewBag.Title"
+           asp-route-authorId="@ViewBag.AuthorId"
+           asp-route-genreId="@ViewBag.GenreId"
+           asp-route-sortOrder="@ViewBag.SortOrder"
+           class="btn btn-outline-secondary btn-sm">Previous</a>
     }
     @if (Model.Count() == ViewBag.PageSize)
     {
         <a asp-action="Index"
            asp-route-page="@(ViewBag.CurrentPage + 1)"
+           asp-route-title="@ViewBag.Title"
+           asp-route-authorId="@ViewBag.AuthorId"
+           asp-route-genreId="@ViewBag.GenreId"
            asp-route-sortOrder="@ViewBag.SortOrder"
            class="btn btn-outline-secondary btn-sm">Next</a>
     }
