@@ -1,0 +1,22 @@
+@{
+    ViewData["Title"] = "Home";
+}
+
+<h1>EF Core Library System</h1>
+<p>This is a simple library management application built with ASP.NET Core MVC and Entity Framework Core.</p>
+
+<h4>Features</h4>
+<ul>
+    <li><strong>Code First</strong> - Books, Authors, Genres with Fluent API configuration</li>
+    <li><strong>Database First</strong> - Simulated scaffolded models from an existing database</li>
+    <li><strong>Efficient Queries</strong> - Using Include, ThenInclude, and AsNoTracking</li>
+</ul>
+
+<h4>Navigation</h4>
+<ul>
+    <li><a asp-controller="Books" asp-action="Index">Books</a> - CRUD for books (Code First)</li>
+    <li><a asp-controller="Authors" asp-action="Index">Authors</a> - CRUD for authors</li>
+    <li><a asp-controller="Genres" asp-action="Index">Genres</a> - CRUD for genres</li>
+    <li><a asp-controller="DatabaseFirstBooks" asp-action="Index">DB First Books</a> - CRUD using Database First approach</li>
+    <li><a asp-controller="LibraryQuery" asp-action="Index">Queries</a> - Efficient EF Core query demonstrations</li>
+</ul>

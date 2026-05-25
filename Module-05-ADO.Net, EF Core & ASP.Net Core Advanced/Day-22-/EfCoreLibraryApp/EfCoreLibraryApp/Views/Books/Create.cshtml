@@ -1,0 +1,32 @@
+@model EfCoreLibraryApp.Models.Book
+@{
+    ViewData["Title"] = "Create Book";
+}
+
+<h2>Create Book</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="AuthorID" class="form-label">Author</label>
+        <select asp-for="AuthorID" asp-items="@(ViewBag.Authors as SelectList)" class="form-select">
+            <option value="">-- Select Author --</option>
+        </select>
+    </div>
+    <div class="mb-3">
+        <label class="form-label">Genres</label>
+        @foreach (var genre in (List<EfCoreLibraryApp.Models.Genre>)ViewBag.Genres)
+        {
+            <div class="form-check">
+                <input type="checkbox" name="selectedGenres" value="@genre.GenreID" class="form-check-input" />
+                <label class="form-check-label">@genre.Name</label>
+            </div>
+        }
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

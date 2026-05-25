@@ -1,0 +1,28 @@
+@model EfCoreLibraryApp.DatabaseFirstModels.DbFirstBook
+@{
+    ViewData["Title"] = "Create Book (DB First)";
+}
+
+<h2>Create Book (Database First)</h2>
+
+<form asp-action="Create" method="post">
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+    <div class="mb-3">
+        <label asp-for="ISBN" class="form-label"></label>
+        <input asp-for="ISBN" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="PublishYear" class="form-label">Publish Year</label>
+        <input asp-for="PublishYear" class="form-control" type="number" />
+    </div>
+    <div class="mb-3">
+        <label asp-for="Price" class="form-label"></label>
+        <input asp-for="Price" class="form-control" type="number" step="0.01" />
+    </div>
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Index" class="btn btn-secondary">Back</a>
+</form>

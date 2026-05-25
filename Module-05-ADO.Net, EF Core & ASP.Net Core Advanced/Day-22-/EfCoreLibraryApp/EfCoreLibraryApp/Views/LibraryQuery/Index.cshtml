@@ -1,0 +1,82 @@
+@{
+    ViewData["Title"] = "Library Queries";
+}
+
+<h2>EF Core Query Demonstrations</h2>
+<p>This page shows efficient EF Core queries using <code>Include</code>, <code>ThenInclude</code>, and <code>AsNoTracking</code>.</p>
+
+<hr />
+
+<h4>All Books with Authors and Genres (Eager Loading)</h4>
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Genres</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.AllBooks != null)
+        {
+            foreach (var book in (IEnumerable<EfCoreLibraryApp.Models.Book>)ViewBag.AllBooks)
+            {
+                <tr>
+                    <td>@book.Title</td>
+                    <td>@book.Author?.Name</td>
+                    <td>@string.Join(", ", book.BookGenres.Select(bg => bg.Genre?.Name))</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<h4>Books by George Orwell (Filtered Query)</h4>
+<ul>
+    @if (ViewBag.OrwellBooks != null)
+    {
+        foreach (var book in (IEnumerable<EfCoreLibraryApp.Models.Book>)ViewBag.OrwellBooks)
+        {
+            <li>@book.Title</li>
+        }
+    }
+</ul>
+
+<hr />
+
+<h4>Authors with Book Count (Projection)</h4>
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr>
+            <th>Author</th>
+            <th>Book Count</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.AuthorsWithCounts != null)
+        {
+            foreach (dynamic item in ViewBag.AuthorsWithCounts)
+            {
+                <tr>
+                    <td>@item.Name</td>
+                    <td>@item.BookCount</td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<h4>Fiction Books (Genre Filter)</h4>
+<ul>
+    @if (ViewBag.FictionBooks != null)
+    {
+        foreach (var title in (IEnumerable<string>)ViewBag.FictionBooks)
+        {
+            <li>@title</li>
+        }
+    }
+</ul>
