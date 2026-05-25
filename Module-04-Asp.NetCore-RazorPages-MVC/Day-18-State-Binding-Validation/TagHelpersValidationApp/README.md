@@ -4,7 +4,7 @@ This project represents a professional student submission for Module 04 (ASP.NET
 
 ---
 
-## 📂 Implemented Features
+## Implemented Features
 
 ### Customer Feedback Portal
 * **Structured Feedback Form**: Enforces input tagging for Name, Email, Rating, and Comments.
@@ -21,7 +21,7 @@ This project represents a professional student submission for Module 04 (ASP.NET
 
 ---
 
-## 💻 How to Run the App
+## How to Run the App
 
 Ensure you have the .NET SDK installed (minimum version .NET 8).
 
@@ -45,7 +45,7 @@ dotnet run --project TagHelpersValidationApp
 
 ---
 
-## 🎯 Testing and Routes Checklist
+## Testing and Routes Checklist
 
 ### Support Routes
 * **Home Page**: `http://localhost:<port>/` - Landing dashboard.
