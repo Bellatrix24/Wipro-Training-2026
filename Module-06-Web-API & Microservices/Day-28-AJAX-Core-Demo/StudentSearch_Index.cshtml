@@ -1,0 +1,62 @@
+@* Hey diary! This is our StudentSearch_Index view skeleton *@
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day 28: Dynamic AJAX Roster Search</title>
+    <!-- Import the standard jQuery library distribution dependency CDN script cleanly -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body style="font-family: Arial, sans-serif; background-color: #f9f9f9; padding: 20px;">
+
+    <div style="max-width: 500px; margin: 50px auto; padding: 30px; background-color: #fff; border: 1px solid #ddd; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+        <h2 style="color: #333; margin-top: 0;">Student Dynamic Lookup</h2>
+        <p style="color: #666; font-size: 14px;">Click the button below to fetch raw backend messages dynamically without refreshing the page!</p>
+        
+        <!-- Element block with an ID of btnClick -->
+        <button id="btnClick" style="padding: 10px 20px; font-size: 14px; font-weight: bold; color: #fff; background-color: #28a745; border: none; border-radius: 4px; cursor: pointer; width: 100%; margin-bottom: 20px;">
+            Fetch Message
+        </button>
+
+        <label style="font-weight: bold; color: #555; display: block; margin-bottom: 5px;">Response Message Container:</label>
+        <!-- Target result box with an ID of result -->
+        <div id="result" style="padding: 15px; background-color: #f1f3f5; border: 1px solid #ced4da; border-radius: 4px; min-height: 20px; word-wrap: break-word; color: #495057; font-family: monospace;">
+            [Pending Interaction...]
+        </div>
+    </div>
+
+    <!-- The Execution Core Script -->
+    <script>
+        $(document).ready(function () {
+            // Hey diary! We register a click event handler on our btnClick element.
+            $('#btnClick').on('click', function () {
+                
+                // Visual feedback showing the request is dispatched in the background
+                $('#result').html('Loading background stream...').css('color', '#007bff');
+
+                // The jQuery setup block executing the background network call
+                $.ajax({
+                    url: '/Home/GetMessage',
+                    type: 'GET',
+                    success: function (response) {
+                        // Hey diary! This success handler intercepts the JSON stream,
+                        // and uses DOM manipulation to inject the message dynamically without a full reload!
+                        $('#result').html(response.message).css('color', '#28a745');
+                    },
+                    error: function (xhr, status, error) {
+                        // Hey diary! This fallback error block catches failed responses (like 404 or server down)
+                        // and alerts the user cleanly.
+                        $('#result').html('Error fetching message.').css('color', '#dc3545');
+                        alert('AJAX Call Failed! Error details: ' + error);
+                    }
+                });
+
+            });
+        });
+    </script>
+</body>
+</html>
