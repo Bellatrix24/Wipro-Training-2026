@@ -1,0 +1,67 @@
+{
+  "info": {
+    "_postman_id": "8b9f3e4d-7a6c-4b5a-9e2d-3c4b5a6c7d8e",
+    "name": "Day 27 REST Student API Lab Collection",
+    "description": "Hey diary! This collection maps out our standard REST test requests for the student roster API endpoint.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Get All Students Roster",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "https://localhost:7123/api/students",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7123",
+          "path": [
+            "api",
+            "students"
+          ]
+        },
+        "description": "Hey diary! This GET request retrieves the complete student list as a lightweight JSON payload."
+      },
+      "response": []
+    },
+    {
+      "name": "Register New Student",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Parth\",\n  \"course\": \"DotNet Core WebAPI\",\n  \"age\": 22\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "https://localhost:7123/api/students",
+          "protocol": "https",
+          "host": [
+            "localhost"
+          ],
+          "port": "7123",
+          "path": [
+            "api",
+            "students"
+          ]
+        },
+        "description": "Hey diary! This POST request sends a JSON payload to insert a new student record onto the database roster."
+      },
+      "response": []
+    }
+  ]
+}
