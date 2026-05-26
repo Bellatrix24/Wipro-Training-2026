@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Day 23 AJAX Lab Demo</title>
+    <!-- We import jQuery to use the simple $.ajax syntax -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div style="max-width: 400px; margin: 30px auto; font-family: sans-serif; padding: 20px; border: 1px solid #ccc; border-radius: 8px;">
+        <h3>Student Registration Form (AJAX Demo)</h3>
+        
+        <!-- Form elements where the student types their details -->
+        <label for="studentName">Name:</label><br>
+        <input type="text" id="studentName" placeholder="Enter name" style="width: 100%; margin-bottom: 10px; padding: 8px; box-sizing: border-box;"><br><br>
+
+        <label for="studentAge">Age:</label><br>
+        <input type="number" id="studentAge" placeholder="Enter age" style="width: 100%; margin-bottom: 20px; padding: 8px; box-sizing: border-box;"><br>
+
+        <!-- A normal button instead of a submit button so the page doesn't reload! -->
+        <button id="btnSubmit" style="padding: 10px 20px; background-color: #007bff; color: white; border: none; border-radius: 4px; cursor: pointer; width: 100%;">
+            Save Student Info
+        </button>
+
+        <!-- A small placeholder div to print messages from the backend -->
+        <div id="feedbackMessage" style="margin-top: 15px; font-weight: bold; text-align: center;"></div>
+    </div>
+
+    <script>
+        // Hey diary! Here we listen for the submit button click event.
+        $(document).ready(function () {
+            $('#btnSubmit').on('click', function () {
+                
+                // Grab the user values from the fields
+                var studentData = {
+                    Name: $('#studentName').val(),
+                    Age: $('#studentAge').val()
+                };
+
+                // Form validation check before sending
+                if (!studentData.Name || !studentData.Age) {
+                    $('#feedbackMessage').text('Please fill out all fields first.').css('color', 'red');
+                    return;
+                }
+
+                // Clear any previous feedback message and display loading state
+                $('#feedbackMessage').text('Sending data to backend...').css('color', 'orange');
+
+                // Standard AJAX setup to send data in the background!
+                $.ajax({
+                    url: '/Student/RegisterAsync', // The MVC Controller path where our data goes
+                    type: 'POST',                  // POST request because we are sending new data
+                    data: studentData              // The data object containing name and age
+                })
+                .done(function (response) {
+                    // Hey diary! .done() runs if the server responds with a 200 OK status code.
+                    // We print the success message in green without reloading the screen!
+                    $('#feedbackMessage').text('Success! Server says: ' + response.message).css('color', 'green');
+                    
+                    // Reset the form inputs
+                    $('#studentName').val('');
+                    $('#studentAge').val('');
+                })
+                .fail(function (xhr, status, error) {
+                    // Hey diary! .fail() runs if the connection drops or if the controller returns an error.
+                    // We print the error message in red to warn the user.
+                    $('#feedbackMessage').text('Failed! Server error: ' + error).css('color', 'red');
+                });
+
+            });
+        });
+    </script>
+</body>
+</html>
