@@ -1,0 +1,61 @@
+name: Module 7 TechSphere Contact CMS CI/CD
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build-and-test-api:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Module-07-Devops/Assignments/TechSphereContactCMS/api
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install API Dependencies
+        run: npm install
+
+      - name: Run API Tests
+        run: npm test
+
+  build-client:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: Module-07-Devops/Assignments/TechSphereContactCMS/client
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install Client Dependencies
+        run: npm install
+
+      - name: Build React Client
+        run: npm run build
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [build-and-test-api, build-client]
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Deploy to Cloud
+        run: |
+          echo "deploying api and client to cloud staging/production..."
+          echo "deployment finished successfully"

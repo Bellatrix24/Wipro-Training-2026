@@ -6,3 +6,12 @@
 *.suo
 *.userosscache
 *.sln.docstates
+
+# Node & DevOps practical ignores
+node_modules/
+.env
+.env.local
+dist/
+build/
+.DS_Store
+
