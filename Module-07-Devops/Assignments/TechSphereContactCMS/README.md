@@ -56,6 +56,8 @@ A simple student project to build, test, and deploy a Contact Management System 
    npm test
    ```
 
+Testing is done using Jest and Supertest.
+
 ## Docker Command
 1. Build backend image:
    ```bash
