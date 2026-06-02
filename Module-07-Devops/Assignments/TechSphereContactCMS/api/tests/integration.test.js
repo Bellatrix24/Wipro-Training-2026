@@ -6,17 +6,26 @@ const Contact = require('../models/Contact');
 
 let mongoServer;
 
-//starts database memory server before tests run
+//starts database server before tests run
 beforeAll(async () => {
-  mongoServer = await MongoMemoryServer.create();
-  const uri = mongoServer.getUri();
+  let uri;
+  if (process.env.MONGO_URI_TEST) {
+    //uses the service container provided in environment
+    uri = process.env.MONGO_URI_TEST;
+  } else {
+    //falls back to local memory server
+    mongoServer = await MongoMemoryServer.create();
+    uri = mongoServer.getUri();
+  }
   await mongoose.connect(uri);
 });
 
-//stops database memory server after all tests are done
+//stops database server after all tests are done
 afterAll(async () => {
   await mongoose.disconnect();
-  await mongoServer.stop();
+  if (mongoServer) {
+    await mongoServer.stop();
+  }
 });
 
 //clears contacts collection after each individual test

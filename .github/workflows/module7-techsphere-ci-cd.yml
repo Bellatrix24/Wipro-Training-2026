@@ -8,12 +8,17 @@ on:
 
 jobs:
   build-and-test-api:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     defaults:
       run:
         working-directory: Module-07-Devops/Assignments/TechSphereContactCMS/api
+    services:
+      mongodb:
+        image: mongo:7.0
+        ports:
+          - 27017:27017
     env:
-      MONGOMS_VERSION: 7.0.14
+      MONGO_URI_TEST: mongodb://localhost:27017/contactcms_test
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
