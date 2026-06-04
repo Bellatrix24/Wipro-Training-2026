@@ -1,0 +1,41 @@
+{
+  "//SecurityNotice": "This gateway architecture shields our private internal microservices (ports, hosts, and paths) from public visibility. The frontend only communicates with this gateway.",
+  "Routes": [
+    {
+      "//Service": "Authentication Service Route Wrapper",
+      "//Description": "Validates credentials and issues security tokens. It is exposed through the gateway so clients can authenticate centrally.",
+      "DownstreamPathTemplate": "/api/auth/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "auth-service-internal.local",
+          "Port": 4431
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/auth/{everything}",
+      "UpstreamHttpMethod": [ "POST", "OPTIONS" ]
+    },
+    {
+      "//Service": "Payment Service Route Wrapper",
+      "//Description": "Processes order transactions. It requires authentication validation at the gateway level before forwarding requests.",
+      "DownstreamPathTemplate": "/api/payments/{everything}",
+      "DownstreamScheme": "https",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "payment-service-internal.local",
+          "Port": 4432
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/payments/{everything}",
+      "UpstreamHttpMethod": [ "POST", "GET" ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "GatewayKey",
+        "AllowedScopes": []
+      }
+    }
+  ],
+  "GlobalConfiguration": {
+    "//Note": "Centralized settings for the gateway. This hides internal microservices behind a single public-facing DNS name.",
+    "BaseUrl": "https://gateway.wiprotraining.com"
+  }
+}
