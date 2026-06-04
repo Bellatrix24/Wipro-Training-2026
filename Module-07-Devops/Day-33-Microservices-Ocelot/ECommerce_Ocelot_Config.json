@@ -1,0 +1,35 @@
+{
+  "//Note": "This configuration acts as a single central entry point. Clients hit our gateway, and Ocelot routes them behind the scenes.",
+  "Routes": [
+    {
+      "//Comment": "Route 1: Maps gateway product requests to the Product microservice running on port 5001.",
+      "DownstreamPathTemplate": "/api/products",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5001
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/products",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    },
+    {
+      "//Comment": "Route 2: Maps gateway order requests to the Order microservice running on port 5002.",
+      "DownstreamPathTemplate": "/api/orders",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5002
+        }
+      ],
+      "UpstreamPathTemplate": "/gateway/orders",
+      "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ]
+    }
+  ],
+  "GlobalConfiguration": {
+    "//GatewayInfo": "This binds our gateway service together, exposing them as if they were a single unified application.",
+    "BaseUrl": "http://localhost:7000"
+  }
+}
