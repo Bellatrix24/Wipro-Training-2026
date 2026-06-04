@@ -1,0 +1,58 @@
+[
+  {
+    "name": "Fetch Product Details By ID",
+    "description": "Trainee test to check if attribute routing is mapping GET requests correctly for a specific product ID.",
+    "request": {
+      "method": "GET",
+      "url": "https://localhost:5001/api/products/101",
+      "headers": [
+        {
+          "key": "Accept",
+          "value": "application/json"
+        }
+      ],
+      "body": null
+    },
+    "expectedResponse": {
+      "statusCode": 200,
+      "contentType": "application/json",
+      "samplePayload": {
+        "productId": 101,
+        "name": "Smart Scanner Tool",
+        "stockLevel": 45,
+        "warehouseCode": "WH-NORTHEAST"
+      }
+    }
+  },
+  {
+    "name": "Stock Monitoring Query",
+    "description": "Sends a POST request with a payload to query stock levels across different warehouse locations.",
+    "request": {
+      "method": "POST",
+      "url": "https://localhost:5001/api/products/monitor",
+      "headers": [
+        {
+          "key": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "mode": "raw",
+        "raw": {
+          "warehouseCode": "WH-NORTHEAST",
+          "minStockThreshold": 10,
+          "includeInactiveItems": false
+        }
+      }
+    },
+    "expectedResponse": {
+      "statusCode": 200,
+      "contentType": "application/json",
+      "samplePayload": {
+        "queryTimestamp": "2026-06-05T03:19:52Z",
+        "itemsBelowThreshold": 3,
+        "status": "Healthy"
+      }
+    }
+  }
+]
