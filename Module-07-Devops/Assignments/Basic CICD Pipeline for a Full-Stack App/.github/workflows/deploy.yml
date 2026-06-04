@@ -1,0 +1,74 @@
+name: Deploy Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test-and-build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install backend dependencies and run tests
+        run: |
+          if [ -d "Module-07-Devops/Assignments/Basic CICD Pipeline for a Full-Stack App/api" ]; then
+            cd "Module-07-Devops/Assignments/Basic CICD Pipeline for a Full-Stack App/api"
+          else
+            cd "api"
+          fi
+          npm install
+          npm test
+
+      - name: Install frontend dependencies and build
+        run: |
+          if [ -d "Module-07-Devops/Assignments/Basic CICD Pipeline for a Full-Stack App/client" ]; then
+            cd "Module-07-Devops/Assignments/Basic CICD Pipeline for a Full-Stack App/client"
+          else
+            cd "client"
+          fi
+          npm install
+          npm run build
+
+      - name: Validate and build with Docker Compose
+        run: |
+          if [ -d "Module-07-Devops/Assignments/Basic CICD Pipeline for a Full-Stack App" ]; then
+            cd "Module-07-Devops/Assignments/Basic CICD Pipeline for a Full-Stack App"
+          fi
+          docker compose config
+          docker compose build
+
+      - name: Build and Push Docker Images
+        run: |
+          if [ -d "Module-07-Devops/Assignments/Basic CICD Pipeline for a Full-Stack App" ]; then
+            BASE_PATH="Module-07-Devops/Assignments/Basic CICD Pipeline for a Full-Stack App"
+          else
+            BASE_PATH="."
+          fi
+          
+          # build backend and frontend images locally
+          docker build -t contact-api:latest "$BASE_PATH/api"
+          docker build -t contact-client:latest "$BASE_PATH/client"
+          
+          # check if docker hub credentials are set
+          if [ -n "${{ secrets.DOCKER_USERNAME }}" ] && [ -n "${{ secrets.DOCKER_PASSWORD }}" ]; then
+            echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+            
+            # tag and push images
+            docker tag contact-api:latest "${{ secrets.DOCKER_USERNAME }}/contact-api:latest"
+            docker tag contact-client:latest "${{ secrets.DOCKER_USERNAME }}/contact-client:latest"
+            
+            docker push "${{ secrets.DOCKER_USERNAME }}/contact-api:latest"
+            docker push "${{ secrets.DOCKER_USERNAME }}/contact-client:latest"
+          else
+            echo "Docker Hub credentials not configured. Skipping image push."
+          fi
