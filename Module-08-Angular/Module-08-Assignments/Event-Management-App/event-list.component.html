@@ -1,0 +1,45 @@
+<!-- Main Event Dashboard Container for Graded Review -->
+<div class="event-container">
+  <h2 class="event-title">Wipro Training Event Dashboard</h2>
+  <p class="event-subtitle">Case Study Submission: Data binding, custom pipes, structural directives, and browser animations.</p>
+
+  <table class="event-table">
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Scheduled Date</th>
+        <th>Category</th>
+        <th>Ticket Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- 
+        Trainee Note: 
+        1. *ngFor loops through each event item in the TS array.
+        2. [appHighlight]="event.price" sends the price to the custom directive for highlight checks.
+        3. @fadeIn runs the simple enter animation when the DOM element mounts.
+      -->
+      <tr *ngFor="let event of events" [appHighlight]="event.price" @fadeIn>
+        <td>
+          <strong>{{ event.name }}</strong>
+          <!-- Visual label to show evaluator why a row has turned gold -->
+          <span *ngIf="event.price > 2000" class="premium-badge">Premium Tier</span>
+        </td>
+        <td>{{ event.date | date:'mediumDate' }}</td>
+        <td>
+          <span class="category-badge" [ngClass]="{
+            'bg-tech': event.category === 'Technology',
+            'bg-arts': event.category === 'Arts',
+            'bg-music': event.category === 'Entertainment'
+          }">
+            {{ event.category }}
+          </span>
+        </td>
+        <td>
+          <!-- Format price using our custom pipe to append Rupee symbol and double decimals -->
+          <strong>{{ event.price | priceFormat }}</strong>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
