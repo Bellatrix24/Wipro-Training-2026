@@ -1,0 +1,30 @@
+<!-- Child course details template view -->
+<!-- The *ngIf="course" checks if a course context is active. 
+     If null (like when the page first loads), it hides this card to prevent template runtime errors. -->
+<div *ngIf="course" class="course-detail-card">
+  <h3>Course Detailed View</h3>
+  
+  <div class="meta-row">
+    <p><strong>Course ID:</strong> {{ course.id }}</p>
+    <p><strong>Instructor:</strong> {{ course.instructor }}</p>
+  </div>
+
+  <div class="desc-row">
+    <p><strong>Description:</strong></p>
+    <p class="description-text">{{ course.description }}</p>
+  </div>
+
+  <div class="edit-row">
+    <label for="edit-title"><strong>Edit Title Inline:</strong></label>
+    <!-- Two-Way Binding ([(ngModel)]): This synchronizes the input value and the course object title.
+         Any edits typed in this box update the course title dynamically inside the parent array list
+         without requiring any page refreshes! -->
+    <input 
+      id="edit-title" 
+      type="text" 
+      class="form-control" 
+      [(ngModel)]="course.title" 
+      placeholder="Update course title..." 
+    />
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<!-- Parent course list template view -->
+<div class="course-list-container">
+  <h2>EduLearn Course Management Directory</h2>
+  
+  <table class="course-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Course Title</th>
+        <th>Instructor</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Loop through each course in our array list -->
+      <tr *ngFor="let course of courses" [class.selected]="course === selectedCourse">
+        <td>{{ course.id }}</td>
+        <td>{{ course.title }}</td>
+        <td>{{ course.instructor }}</td>
+        <td>
+          <!-- Event Binding ((click)): When clicked, we trigger our TypeScript selectCourse method, 
+               updating the selected course context instantly in our controller -->
+          <button class="btn btn-primary" (click)="selectCourse(course)">
+            View Details
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Separator line -->
+  <hr class="section-divider" />
+
+  <!-- Child Integration: 
+       We embed our custom child component selector <app-course-detail>.
+       Property Binding ([course]="selectedCourse"): We bind the parent's selectedCourse variable 
+       directly to the child's input variable, flowing data down the component tree. -->
+  <app-course-detail [course]="selectedCourse"></app-course-detail>
+</div>
