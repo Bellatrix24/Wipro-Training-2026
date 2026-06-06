@@ -1,0 +1,76 @@
+<div class="bookstore-container">
+  <h2 class="bookstore-title">Wipro BookStore Pro Directory</h2>
+  <p class="bookstore-subtitle">Technical Trainee Assignment: Multi-pattern stream handlers, custom discount calculations, and interceptors.</p>
+
+  <div class="grid-container">
+    <!-- Manual Subscription Catalog Section -->
+    <div class="books-section">
+      <h3 class="stream-title">Book Catalog (Manual Subscription Unpack)</h3>
+      <table class="book-list-table">
+        <thead>
+          <tr>
+            <th>Title & Author</th>
+            <th>Description Preview</th>
+            <th>Publish Date</th>
+            <th>Price Details</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let book of booksManual">
+            <td>
+              <!-- UpperCasePipe applied for book titles -->
+              <strong>{{ book.title | uppercase }}</strong>
+              <br />
+              <small style="color: #64748b;">By {{ book.author }}</small>
+            </td>
+            <td>
+              <!-- SlicePipe limits description to 50 characters as requested for neat layout -->
+              {{ book.description | slice:0:50 }}...
+            </td>
+            <td>
+              <!-- DatePipe standard format -->
+              {{ book.publishedDate | date:'longDate' }}
+            </td>
+            <td>
+              <!-- CurrencyPipe bound to Indian Rupees (INR) -->
+              <del style="color: #94a3b8; font-size: 0.8rem;">
+                {{ book.price | currency:'INR':'symbol' }}
+              </del>
+              <br />
+              <!-- Custom discount pipe and built-in currency pipe applied together -->
+              <span style="color: #16a34a; font-weight: 600;">
+                {{ book.price | discount:book.discount | currency:'INR':'symbol' }}
+              </span>
+              <br />
+              <small style="color: #ef4444;">({{ book.discount }}% Off)</small>
+            </td>
+            <td>
+              <button class="btn-select" (click)="selectBook(book)">Select</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Async Stream & Detail Presentation Column -->
+    <div>
+      <div class="books-section" style="margin-bottom: 1.5rem;">
+        <h3 class="stream-title">
+          Async Stream View <span class="async-badge">Observable Direct</span>
+        </h3>
+        <!-- Async pipe used here to demonstrate memory leak prevention automatically -->
+        <ul style="padding-left: 20px; margin: 0; color: #475569; font-size: 0.9rem;">
+          <li *ngFor="let book of booksAsync$ | async" style="margin-bottom: 8px;">
+            <strong>{{ book.title | uppercase }}</strong> - 
+            <span style="color: #16a34a;">{{ book.price | discount:book.discount | currency:'INR':'symbol' }}</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Parent-Child Link:
+           selectedBook binds to child component input, currentBook is passed down -->
+      <app-book-detail [selectedBook]="currentBook"></app-book-detail>
+    </div>
+  </div>
+</div>
